@@ -39,32 +39,31 @@ Próximamente
 Estructura del proyecto
 
 
+```
 store-backend/
-│
 ├── app/
 │   ├── database/
-│   ├── models/
-│   │   ├── persona.py
-│   │   ├── cliente.py
-│   │   ├── empleado.py
-│   │   ├── producto.py
-│   │   ├── pedido.py
-│   │   └── detalle_pedido.py
-│   │
+│   │   └── models/
+│   │       ├── persona.py
+│   │       ├── cliente.py
+│   │       ├── empleado.py
+│   │       ├── producto.py
+│   │       ├── pedido.py
+│   │       └── detalle_pedido.py
 │   ├── routes/
 │   ├── services/
 │   ├── utils/
-│   ├── __init__py
+│   ├── __init__.py
 │   └── main.py
-│
 ├── docs/
 ├── sql/
 ├── tests/
-│
 ├── requirements.txt
 ├── README.md
 ├── LICENSE
 └── .gitignore
+```
+
 
 --------
 
