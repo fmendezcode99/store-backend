@@ -2,7 +2,7 @@ from datetime import date
 from persona import Persona
 
 class Cliente(Persona):
-    """ Representa a un cliente dentro del sistema"""
+    """Representa a un cliente dentro del sistema."""
     def __init__(
             self,
             nombre: str,

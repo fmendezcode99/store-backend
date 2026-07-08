@@ -1,7 +1,7 @@
 from datetime import date
 
 class Persona:
-    """ Representa a una persona dentro del sistema."""
+    """Representa a una persona dentro del sistema."""
     def __init__(self,
                 nombre: str,
                 apellido: str,

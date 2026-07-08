@@ -1,5 +1,5 @@
 class Producto:
-    """ Representa a un producto en el sistema"""
+    """Representa a un producto en el sistema."""
     def __init__(self,
                 nombre: str,
                 sku: str,
