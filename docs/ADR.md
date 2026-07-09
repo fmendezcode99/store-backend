@@ -62,26 +62,67 @@ Beneficios
 Estado: Implementado
 
 
-ADR-002 - Uso de Enum para estados
+ADR-002 - Uso de Enum para representar valores del dominio
 
-Contexto
+Contexto:
 
-Inicialmente se consideró representar el estado del pedido mediante un
-booleano (`pagado`) o cadenas de texto (`str`).
+Durante el diseño del modelo de dominio se identificó que algunos atributos solo pueden tomar un conjunto limitado de valores válidos.
 
-Estas alternativas permitían errores de escritura y limitaban la evolución
-del sistema.
+Inicialmente se consideró representarlos mediante cadenas de texto (`str`) o valores numéricos. Sin embargo, estas alternativas permiten errores de escritura, dificultan el mantenimiento del código y no garantizan la integridad del modelo.
 
+---
 Decisión
 
-Representar los estados mediante un Enum (`EstadoPedido`).
+Representar los valores del dominio mediante enumeraciones (`Enum`) de Python.
 
-Justificación:
+Se implementaron las siguientes enumeraciones:
 
--Evita valores inválidos.
--Centraliza los estados permitidos.
--Facilita la lectura del código.
--Permite agregar nuevos estados sin modificar la lógica existente.
+-EstadoPedido
+-MetodoPago
+-RolEmpleado
+
+---
+
+Justificación
+
+Las enumeraciones permiten definir un conjunto de valores válidos para cada concepto del negocio, evitando que el sistema reciba información incorrecta.
+
+Además, mejoran la legibilidad del código, facilitan el mantenimiento del proyecto y permiten que el propio dominio exprese sus reglas de manera clara.
+
+---
+
+Beneficios
+
+-Evita errores de escritura en cadenas de texto.
+-Centraliza los valores permitidos del dominio.
+-Mejora la legibilidad del código.
+-Facilita el mantenimiento y la evolución del sistema.
+-Incrementa la seguridad del modelo al restringir valores inválidos.
+
+---
+
+Implementación
+
+La decisión fue aplicada mediante las siguientes clases:
+
+Enumeraciones:
+
+-`EstadoPedido`
+-`MetodoPago`
+-`RolEmpleado`
+
+Componentes afectados:
+
+Modelos:
+
+-Pedido
+-Empleado
+
+Enumeraciones:
+
+-EstadoPedido
+-MetodoPago
+-RolEmpleado
 
 Estado: Implementado
 

@@ -1,5 +1,8 @@
 from datetime import date
-from persona import Persona
+
+from app.models.persona import Persona
+from app.enums.rol_empleado import RolEmpleado
+
 
 class Empleado(Persona):
     """Representa a un empleado de la tienda."""
@@ -9,11 +12,11 @@ class Empleado(Persona):
                 identificacion: str,
                 email: str,
                 fecha_de_nacimiento: date,
-                cargo: str,
+                rol: RolEmpleado,
                 salario: float,
                 fecha_inicio: date
                 ) -> None:
         super().__init__(nombre, apellido, identificacion, email, fecha_de_nacimiento)
-        self.cargo = cargo
+        self.rol = rol
         self.salario = salario
         self.fecha_inicio = fecha_inicio

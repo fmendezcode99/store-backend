@@ -1,12 +1,13 @@
 from datetime import date
 from app.enums.estado_pedido import EstadoPedido
+from app.enums.metodo_pago import MetodoPago
 
 class Pedido:
     """Representa un pedido en el sistema."""
     def __init__(self,
                 numero_pedido: str,
                 fecha_compra: date,
-                metodo_pago: str,
+                metodo_pago: MetodoPago,
                 direccion: str,
                 descuento: float,
                 iva: float,
@@ -15,9 +16,11 @@ class Pedido:
         
         self.numero_pedido = numero_pedido
         self.estado = EstadoPedido.PENDIENTE
+        
         self.fecha_compra = fecha_compra
         self.metodo_pago = metodo_pago
         self.direccion = direccion
+        
         self.descuento = descuento
         self.iva = iva
         self.total = total
