@@ -193,3 +193,58 @@ Beneficios
 -Mejora el rendimiento en consultas futuras.
 
 Estado: Implementado
+
+
+ADR-005 - Gestión de los detalles de un pedido mediante composición
+
+
+Contexto
+
+Durante el diseño del modelo de dominio se identificó que un pedido puede contener múltiples productos.
+
+Inicialmente se consideró permitir el acceso directo a la colección de detalles y agregar nuevos elementos mediante operaciones sobre la lista.
+
+Sin embargo, este enfoque permite modificar el pedido sin respetar las reglas del negocio.
+
+---
+
+Decisión
+
+El objeto `Pedido` será el único responsable de administrar la colección de `DetallePedido`.
+
+La colección de detalles será privada y únicamente podrá modificarse mediante el método `agregar_detalle()`.
+
+---
+
+Justificación
+
+Centralizar la modificación de la colección permite proteger las reglas del negocio y mantener la consistencia del pedido.
+
+El método `agregar_detalle()` valida que:
+
+-El pedido se encuentre en estado `PENDIENTE`.
+-Un mismo producto no se agregue dos veces al pedido.
+-Si el producto ya existe, únicamente se incrementa su cantidad.
+
+---
+
+Beneficios
+
+-Evita productos duplicados dentro del pedido.
+-Centraliza las reglas del negocio.
+-Reduce el riesgo de modificaciones incorrectas.
+-Mantiene encapsulada la colección de detalles.
+-Facilita la evolución futura del sistema.
+
+---
+
+Componentes afectados
+
+Modelos
+
+-Pedido
+-DetallePedido
+
+---
+
+Estado: Implementado

@@ -18,3 +18,7 @@ class Producto:
         self.precio_venta = precio_venta
         self.stock = stock
         self.estado_activo = estado_activo
+    @property
+    def precio(self) -> float:
+        """Retorna el precio de venta registrado para ese producto."""
+        return self.precio_venta
