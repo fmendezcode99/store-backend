@@ -139,72 +139,72 @@ Estado: En proceso
 Sprint 3 — Base de datos MySQL
 
 Pendiente:
-
+```
 -[ ] Modelo entidad-relación
 -[ ] Diseño de tablas
 -[ ] Claves primarias
 -[ ] Claves foráneas
 -[ ] Scripts SQL
-
+```
 Estado: Pendiente
 
 
 Sprint 4 — Persistencia de datos
 
 Pendiente:
-
+```
 -[ ] Conexión Python - MySQL
 -[ ] CRUD de Clientes
 -[ ] CRUD de Productos
 -[ ] CRUD de Pedidos
-
+```
 Estado: Pendiente
 
 
 Sprint 5 — API REST
 
 Pendiente:
-
+```
 -[ ] FastAPI
 -[ ] Endpoints
 -[ ] Validaciones
 -[ ] Documentación automática
-
+```
 Estado: Pendiente
 
 
 Sprint 6 — Autenticación
 
 Pendiente:
-
+```
 -[ ] Login
 -[ ] Roles
 -[ ] JWT
 -[ ] Protección de rutas
-
+```
 Estado: Pendiente
 
 
 Sprint 7 — Pruebas
 
 Pendiente:
-
+```
 -[ ] Pytest
 -[ ] Pruebas unitarias
 -[ ] Pruebas de integración
-
+```
 Estado: Pendiente
 
 
 Sprint 8 — Docker y despliegue
 
 Pendiente:
-
+```
 -[ ] Docker
 -[ ] Docker Compose
 -[ ] Variables de entorno
 -[ ] Deploy
-
+```
 Estado: Pendiente
 
 --------
