@@ -1,236 +1,178 @@
-Store Backend
+# Store Management System
 
-Store Backend es un proyecto de backend desarrollado como parte de un proceso de formación en desarrollo de software. Su objetivo es simular el funcionamiento de una tienda virtual aplicando buenas prácticas de programación, arquitectura de software y diseño de bases de datos.
+Proyecto académico desarrollado para aplicar conceptos de Programación Orientada a Objetos (POO), modelado de dominio y buenas prácticas de desarrollo de software utilizando Python.
 
-El proyecto se desarrolla utilizando Python como lenguaje principal y MySQL como sistema de gestión de bases de datos. A medida que avance su desarrollo, incorporará una API para la gestión de clientes, empleados, productos y pedidos, siguiendo una arquitectura organizada, código limpio y control de versiones con Git.
+El objetivo del proyecto es construir progresivamente un sistema de gestión para una tienda, implementando una arquitectura limpia, reglas de negocio y un historial de desarrollo organizado mediante Git.
 
---------
+---
 
-Objetivos
+## Estado del proyecto
 
--Aplicar Programación Orientada a Objetos.
--Diseñar un dominio sólido antes de programar.
--Implementar una base de datos relacional con MySQL.
--Desarrollar una API REST con FastAPI.
--Aplicar buenas prácticas de arquitectura de software.
--Construir un proyecto de portafolio para futuras entrevistas técnicas.
+### Sprint 1 - Modelado del dominio
+**Estado:** Completado
 
---------
+#### Implementado
+* Estructura inicial del proyecto.
+* Organización por paquetes.
+* Modelado de entidades del dominio.
+* Clases base del sistema.
+* Enumeraciones para representar estados y tipos del negocio.
+* Configuración inicial del repositorio Git.
 
-Tecnologías
+---
 
-Actualmente
+### Sprint 2 - Reglas de negocio del dominio
+**Estado:** En progreso
 
--Python 3
--Git
--GitHub
--Visual Studio Code
+#### Implementado
+* Composición entre `Pedido` y `DetallePedido`.
+* Administración privada de los detalles del pedido.
+* Método `agregar_detalle()`.
+* Prevención de productos duplicados dentro de un pedido.
+* Incremento automático de cantidades cuando el producto ya existe.
+* Cálculo dinámico del subtotal mediante `@property`.
+* Obtención automática del precio de venta desde `Producto`.
+* Documentación de decisiones de arquitectura mediante ADR.
 
-Próximamente
+#### Pendiente
+* [ ] Cálculo del subtotal del pedido.
+* [ ] Aplicación de descuentos.
+* [ ] Cálculo de IVA.
+* [ ] Cálculo del total del pedido.
+* [ ] Cambios de estado del pedido.
+* [ ] Validaciones de stock.
 
--MySQL
--FastAPI
--SQLAlchemy
--Docker
--Pytest
+---
 
---------
+### Sprint 3 - Servicios
+**Estado:** Pendiente
 
-Estructura del proyecto
+#### Objetivos
+* [ ] Implementar la capa de servicios.
+* [ ] Separar lógica de negocio del modelo.
+* [ ] Procesamiento de pedidos.
+* [ ] Gestión de inventario.
+* [ ] Gestión de clientes.
 
+---
 
+### Sprint 4 - Persistencia
+**Estado:** Pendiente
+
+#### Objetivos
+* [ ] Integración con base de datos.
+* [ ] Repositorios.
+* [ ] CRUD.
+* [ ] Consultas.
+* [ ] Persistencia de entidades.
+
+---
+
+### Sprint 5 - API
+**Estado:** Pendiente
+
+#### Objetivos
+* [ ] Implementación con FastAPI.
+* [ ] Endpoints REST.
+* [ ] Validaciones.
+* [ ] Serialización.
+* [ ] Documentación OpenAPI.
+
+---
+
+## Arquitectura
+
+Estructura de directorios planificada para la aplicación:
+
+```text
+app/
+├── enums/
+├── models/
+├── services/
+├── database/
+├── routes/
+└── utils/
 ```
-store-backend/
-├── app/
-│   ├── database/
-│   │   └── models/
-│   │       ├── persona.py
-│   │       ├── cliente.py
-│   │       ├── empleado.py
-│   │       ├── producto.py
-│   │       ├── pedido.py
-│   │       └── detalle_pedido.py
-│   ├── routes/
-│   ├── services/
-│   ├── utils/
-│   ├── __init__.py
-│   └── main.py
-├── docs/
-├── sql/
-├── tests/
-├── requirements.txt
-├── README.md
-├── LICENSE
-└── .gitignore
+
+---
+
+## Modelo del dominio
+
+Actualmente el sistema cuenta con las siguientes entidades:
+
+```text
+Persona
+└── Cliente
+└── Empleado
+
+Producto
+
+Pedido
+└── DetallePedido
 ```
 
+### Enumeraciones
+* `EstadoPedido`
+* `MetodoPago`
+* `RolEmpleado`
 
---------
+---
 
-Modelos del dominio
+## Principales decisiones de arquitectura
 
-Actualmente el proyecto cuenta con los siguientes modelos:
+Las decisiones importantes del proyecto se documentan formalmente mediante *Architecture Decision Records* (ADR).
 
--Persona
--Cliente
--Empleado
--Producto
--Pedido
--DetallePedido
+Registros actuales:
+* `ADR-001` - Estado inicial del pedido
+* `ADR-002` - Uso de Enum para representar valores del dominio
+* `ADR-003` - Conservación del precio histórico
+* `ADR-004` - Almacenamiento del total del pedido
+* `ADR-005` - Gestión de los detalles de un pedido mediante composición
 
-Estos modelos fueron diseñados siguiendo principios de responsabilidad única y separación de responsabilidades antes de iniciar la implementación de la base de datos.
-
---------
-
-Roadmap del proyecto
-
-Sprint 0 — Configuración inicial
-
--Crear repositorio Git
--Configurar GitHub
--Crear estructura del proyecto
--Configurar entorno virtual
--Configurar README
--Configurar .gitignore
-
-Estado: Completado
-
-
-Sprint 1 — Modelado del dominio
-
-Modelos implementados
-
--Persona
--Cliente
--Empleado
--Producto
-
-Conceptos aplicados
-
--Herencia
--Constructores
--Type Hints
--Docstrings
--Organización del proyecto
-
-Estado: Completado
-
-
-Sprint 2 — Gestión de pedidos
-
-Modelos implementados
-
--Pedido
--DetallePedido
-
-Diseño realizado
-
--Diseño del dominio
--Definición de responsabilidades
--Información histórica
--Modelado de entidades
-
-Pendiente:
--[ ] Relaciones entre objetos mediante composición
-
-Estado: En proceso
-
-
-Sprint 3 — Base de datos MySQL
-
-Pendiente:
+La documentación detallada se encuentra en la ruta:
+```text
+docs/ADR.md
 ```
--[ ] Modelo entidad-relación
--[ ] Diseño de tablas
--[ ] Claves primarias
--[ ] Claves foráneas
--[ ] Scripts SQL
-```
-Estado: Pendiente
 
+---
 
-Sprint 4 — Persistencia de datos
+## Tecnologías
 
-Pendiente:
-```
--[ ] Conexión Python - MySQL
--[ ] CRUD de Clientes
--[ ] CRUD de Productos
--[ ] CRUD de Pedidos
-```
-Estado: Pendiente
+### Stack actual
+* **Lenguaje:** Python 3
+* **Paradigma:** Programación Orientada a Objetos
+* **Control de versiones:** Git & GitHub
 
+### Próximamente
+* **Base de datos:** MySQL
+* **Framework Web:** FastAPI
+* **ORM:** SQLAlchemy
 
-Sprint 5 — API REST
+---
 
-Pendiente:
-```
--[ ] FastAPI
--[ ] Endpoints
--[ ] Validaciones
--[ ] Documentación automática
-```
-Estado: Pendiente
+## Historial del desarrollo
 
+El proyecto mantiene un historial de commits pequeños y descriptivos siguiendo buenas prácticas para facilitar el seguimiento paso a paso de cada decisión de desarrollo.
 
-Sprint 6 — Autenticación
+---
 
-Pendiente:
-```
--[ ] Login
--[ ] Roles
--[ ] JWT
--[ ] Protección de rutas
-```
-Estado: Pendiente
+## Objetivos del proyecto
 
+* Aplicar principios SOLID.
+* Diseñar un modelo de dominio consistente.
+* Implementar reglas de negocio encapsuladas en el dominio.
+* Mantener un historial limpio mediante Git.
+* Documentar decisiones de arquitectura mediante registros formales.
+* Construir una API REST profesional.
 
-Sprint 7 — Pruebas
+---
 
-Pendiente:
-```
--[ ] Pytest
--[ ] Pruebas unitarias
--[ ] Pruebas de integración
-```
-Estado: Pendiente
+## Estado general
 
-
-Sprint 8 — Docker y despliegue
-
-Pendiente:
-```
--[ ] Docker
--[ ] Docker Compose
--[ ] Variables de entorno
--[ ] Deploy
-```
-Estado: Pendiente
-
---------
-
-Estado actual
-
-| Información | Estado |
-|-------------|--------|
-| Sprint actual | Sprint 2 |
-| Modelos implementados | 6 |
-| Base de datos | Pendiente |
-| API REST | Pendiente |
-| Docker | Pendiente |
-
---------
-
-
-Próximo objetivo
-
-Implementar las relaciones entre las entidades del dominio y comenzar el diseño del modelo relacional en MySQL.
-
-
---------
-
-Autor
-
-Juan Felipe Méndez
-
-Proyecto desarrollado como parte de mi formación en Desarrollo de Software y construido siguiendo un enfoque incremental, aplicando buenas prácticas de programación y arquitectura de software.
+| Sprint | Estado |
+| :--- | :--- |
+| **Sprint 1** | Completado |
+| **Sprint 2** | En progreso |
+| **Sprint 3** | Pendiente |
+| **Sprint 4** | Pendiente |
+| **Sprint 5** | Pendiente |
