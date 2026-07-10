@@ -11,9 +11,8 @@ class Pedido:
                 fecha_compra: date,
                 metodo_pago: MetodoPago,
                 direccion: str,
-                descuento: float,
-                iva: float,
-                total: float,
+                porcentaje_descuento: float = 0,
+                porcentaje_iva: float = 0.19
                 ) -> None:
         
         self.numero_pedido = numero_pedido
@@ -23,9 +22,8 @@ class Pedido:
         self.metodo_pago = metodo_pago
         self.direccion = direccion
         
-        self.descuento = descuento
-        self.iva = iva
-        self.total = total
+        self.porcentaje_descuento = porcentaje_descuento
+        self.porcentaje_iva = porcentaje_iva
         
         self._detalles: list[DetallePedido] = []
     
@@ -39,3 +37,31 @@ class Pedido:
                 return
         self._detalles.append(detalle)
         
+    @property
+    def subtotal(self) -> float:
+        """Retorna el subtotal del pedido."""
+        subtotal = 0
+        for detalle in self._detalles:
+            subtotal += detalle.subtotal
+        return subtotal
+    
+    @property
+    def valor_descuento(self) -> float:
+        """Retorna el valor del descuento aplicado al pedido."""
+        return self.subtotal * self.porcentaje_descuento
+    
+    @property
+    def subtotal_con_descuento(self) -> float:
+        """Retorna el valor del subtotal con el descuento aplicado al pedido."""
+        return self.subtotal - self.valor_descuento
+    
+    @property
+    def valor_iva(self) -> float:
+        """Retorna el valor del iva aplicado al pedido."""
+        return self.subtotal_con_descuento * self.porcentaje_iva
+    
+    @property
+    def total(self) -> float:
+        """Retorna el valor total del pedido."""
+        return self.subtotal_con_descuento + self.valor_iva
+    

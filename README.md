@@ -30,15 +30,17 @@ El objetivo del proyecto es construir progresivamente un sistema de gestión par
 * Método `agregar_detalle()`.
 * Prevención de productos duplicados dentro de un pedido.
 * Incremento automático de cantidades cuando el producto ya existe.
-* Cálculo dinámico del subtotal mediante `@property`.
 * Obtención automática del precio de venta desde `Producto`.
+* Cálculo dinámico del subtotal del detalle del pedido.
+* Cálculo dinámico del subtotal del pedido.
+* Cálculo del valor del descuento.
+* Cálculo del subtotal con descuento.
+* Cálculo del valor del IVA.
+* Cálculo dinámico del total del pedido.
+* Refactorización del modelo para eliminar información derivada.
 * Documentación de decisiones de arquitectura mediante ADR.
 
 #### Pendiente
-* [ ] Cálculo del subtotal del pedido.
-* [ ] Aplicación de descuentos.
-* [ ] Cálculo de IVA.
-* [ ] Cálculo del total del pedido.
 * [ ] Cambios de estado del pedido.
 * [ ] Validaciones de stock.
 
@@ -98,7 +100,7 @@ app/
 
 ## Modelo del dominio
 
-Actualmente el sistema cuenta con las siguientes entidades:
+Actualmente el sistema cuenta con las siguientes entidades y componentes del negocio:
 
 ```text
 Persona
@@ -106,9 +108,32 @@ Persona
 └── Empleado
 
 Producto
+```
 
+### Comportamiento de Pedidos
+El sistema gestiona la lógica de compras mediante una relación de composición entre las entidades `Pedido` y `DetallePedido`, distribuyendo sus métodos y propiedades calculadas de la siguiente manera:
+
+```text
 Pedido
-└── DetallePedido
+│
+├── Métodos:
+│   └── agregar_detalle()
+│
+└── Propiedades dinámicas (@property):
+    ├── subtotal
+    ├── valor_descuento
+    ├── subtotal_con_descuento
+    ├── valor_iva
+    └── total
+        │
+        ▼
+DetallePedido
+│
+├── Métodos:
+│   └── aumentar_cantidad()
+│
+└── Propiedades dinámicas (@property):
+    └── subtotal
 ```
 
 ### Enumeraciones
@@ -117,6 +142,7 @@ Pedido
 * `RolEmpleado`
 
 ---
+
 
 ## Principales decisiones de arquitectura
 
@@ -128,6 +154,7 @@ Registros actuales:
 * `ADR-003` - Conservación del precio histórico
 * `ADR-004` - Almacenamiento del total del pedido
 * `ADR-005` - Gestión de los detalles de un pedido mediante composición
+* `ADR-006` - Cálculo dinámico de valores derivados del pedido
 
 La documentación detallada se encuentra en la ruta:
 ```text

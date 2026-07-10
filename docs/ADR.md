@@ -148,3 +148,39 @@ Centralizar la modificación de la colección permite proteger las reglas del ne
   * `DetallePedido`
 
 **Estado:** `Implementado`
+
+---
+
+## ADR-006 - Cálculo dinámico de valores derivados del pedido
+
+### Contexto
+Durante el desarrollo del modelo de dominio se identificó que el pedido almacenaba valores calculables como el total, el descuento y el IVA. Esto generaba redundancia de información y aumentaba el riesgo de inconsistencias cuando alguno de los datos base cambiaba.
+
+### Decisión
+Se decidió almacenar únicamente los datos indispensables para representar la compra de forma estática:
+* `porcentaje_descuento`
+* `porcentaje_iva`
+
+Los valores monetarios derivados serán calculados dinámicamente mediante propiedades (`@property`) en Python. Las propiedades implementadas son:
+* `subtotal`
+* `valor_descuento`
+* `subtotal_con_descuento`
+* `valor_iva`
+* `total`
+
+### Justificación
+Esta decisión reduce la duplicidad de información y garantiza la consistencia matemática del modelo. Los valores derivados siempre reflejarán el estado actual del pedido en tiempo real, sin necesidad de sincronizar múltiples atributos de manera manual.
+
+### Beneficios
+* Evita datos redundantes en el almacenamiento.
+* Reduce drásticamente el riesgo de inconsistencias.
+* Facilita el mantenimiento del código.
+* Mejora la legibilidad del dominio.
+* Favorece el principio de responsabilidad única.
+
+### Componentes afectados
+* **Modelos:**
+  * `Pedido`
+  * `DetallePedido`
+
+**Estado:** `Implementado`
