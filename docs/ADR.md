@@ -183,4 +183,9 @@ Esta decisión reduce la duplicidad de información y garantiza la consistencia 
   * `Pedido`
   * `DetallePedido`
 
+## Alcance
+Las reglas relacionadas con cambios de estado del pedido y validación de inventario no forman parte de esta decisión.
+
+Estas funcionalidades serán implementadas en el Sprint 3, una vez se incorpore la capa de persistencia y servicios, ya que requieren coordinación entre múltiples entidades y validaciones transaccionales.
+
 **Estado:** `Implementado`

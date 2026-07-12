@@ -22,7 +22,7 @@ El objetivo del proyecto es construir progresivamente un sistema de gestión par
 ---
 
 ### Sprint 2 - Reglas de negocio del dominio
-**Estado:** En progreso
+**Estado:** Completado
 
 #### Implementado
 * Composición entre `Pedido` y `DetallePedido`.
@@ -40,16 +40,16 @@ El objetivo del proyecto es construir progresivamente un sistema de gestión par
 * Refactorización del modelo para eliminar información derivada.
 * Documentación de decisiones de arquitectura mediante ADR.
 
-#### Pendiente
-* [ ] Cambios de estado del pedido.
-* [ ] Validaciones de stock.
-
 ---
 
 ### Sprint 3 - Servicios
 **Estado:** Pendiente
 
 #### Objetivos
+* [ ] Persistencia del dominio mediante base de datos.
+* [ ] Implementación de la capa de servicios.
+* [ ] Gestión de cambios de estado del pedido.
+* [ ] Validación y actualización de stock.
 * [ ] Implementar la capa de servicios.
 * [ ] Separar lógica de negocio del modelo.
 * [ ] Procesamiento de pedidos.

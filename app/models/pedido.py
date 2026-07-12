@@ -64,4 +64,3 @@ class Pedido:
     def total(self) -> float:
         """Retorna el valor total del pedido."""
         return self.subtotal_con_descuento + self.valor_iva
-    
