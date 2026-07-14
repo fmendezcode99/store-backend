@@ -42,19 +42,30 @@ El objetivo del proyecto es construir progresivamente un sistema de gestión par
 
 ---
 
-### Sprint 3 - Servicios
-**Estado:** Pendiente
+### Sprint 3 - Servicios y Persistencia
+**Estado:** En Progreso
 
-#### Objetivos
-* [ ] Persistencia del dominio mediante base de datos.
-* [ ] Implementación de la capa de servicios.
-* [ ] Gestión de cambios de estado del pedido.
-* [ ] Validación y actualización de stock.
-* [ ] Implementar la capa de servicios.
-* [ ] Separar lógica de negocio del modelo.
-* [ ] Procesamiento de pedidos.
-* [ ] Gestión de inventario.
-* [ ] Gestión de clientes.
+> [!NOTE]
+> **Inicio de la capa de persistencia con MySQL:** El proyecto entra en el Sprint 3, donde se implementará la persistencia de la información. Hasta este momento toda la lógica del negocio se encontraba únicamente en memoria mediante objetos Python.
+
+#### Avances realizados
+* Diseño del modelo de dominio completado.
+* Implementación de las entidades principales en Python.
+* Aplicación de principios de Programación Orientada a Objetos.
+* Documentación mediante ADR.
+* Arquitectura preparada para la capa de persistencia.
+* Configuración inicial de MySQL Server y creación de la base de datos `store_management_db`.
+* Organización de scripts SQL para la creación del esquema.
+
+#### Objetivos y Próximos pasos
+* [ ] Aprender SQL básico (DDL y DML).
+* [ ] Implementar las tablas del sistema mediante scripts y organizar scripts de carga inicial.
+* [ ] Comenzar la persistencia por la entidad `Producto` (entidad de menor complejidad).
+* [ ] Integrar SQLAlchemy de forma progresiva.
+* [ ] Implementar la capa Repository para separar la lógica de acceso a datos.
+* [ ] Implementación de la capa de servicios y separación de la lógica de negocio del modelo.
+* [ ] Gestión de cambios de estado del pedido, validación y actualización de stock.
+* [ ] Procesamiento de pedidos, gestión de inventario y clientes.
 
 ---
 
@@ -87,13 +98,25 @@ El objetivo del proyecto es construir progresivamente un sistema de gestión par
 Estructura de directorios planificada para la aplicación:
 
 ```text
-app/
-├── enums/
-├── models/
-├── services/
-├── database/
-├── routes/
-└── utils/
+store-backend/
+├── app/
+│   ├── database/
+│   ├── enums/
+│   ├── models/
+│   ├── repositories/
+│   ├── routes/
+│   ├── services/
+│   └── utils/
+├── docs/
+│   └── adr/
+├── sql/
+│   ├── schema/
+│   ├── seed/
+│   └── queries/
+├── tests/
+├── README.md
+└── requirements.txt
+
 ```
 
 ---
@@ -143,6 +166,21 @@ DetallePedido
 
 ---
 
+## Base de datos
+
+La persistencia del proyecto se implementará utilizando las siguientes tecnologías:
+* **Motor:** MySQL Server 8
+* **Administración:** MySQL Workbench
+* **ORM:** SQLAlchemy (Integración progresiva en Sprint 3)
+* **Driver:** PyMySQL
+
+### Decisiones de Diseño de Datos
+* Se adopta MySQL como motor de base de datos relacional para el sistema.
+* Todos los cambios estructurales serán versionados mediante scripts SQL almacenados en la carpeta `sql/`.
+* La base de datos podrá reconstruirse completamente ejecutando los scripts en el orden correcto (`schema/` -> `seed/` -> `queries/`).
+
+---
+
 
 ## Principales decisiones de arquitectura
 
@@ -155,6 +193,7 @@ Registros actuales:
 * `ADR-004` - Almacenamiento del total del pedido
 * `ADR-005` - Gestión de los detalles de un pedido mediante composición
 * `ADR-006` - Cálculo dinámico de valores derivados del pedido
+* `ADR-007` - Implementación de la capa de persistencia con MySQL
 
 La documentación detallada se encuentra en la ruta:
 ```text
@@ -168,12 +207,12 @@ docs/ADR.md
 ### Stack actual
 * **Lenguaje:** Python 3
 * **Paradigma:** Programación Orientada a Objetos
+* **Base de datos:** MySQL Server 8 & PyMySQL
 * **Control de versiones:** Git & GitHub
 
 ### Próximamente
-* **Base de datos:** MySQL
-* **Framework Web:** FastAPI
 * **ORM:** SQLAlchemy
+* **Framework Web:** FastAPI
 
 ---
 

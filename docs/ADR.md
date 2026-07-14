@@ -189,3 +189,61 @@ Las reglas relacionadas con cambios de estado del pedido y validación de invent
 Estas funcionalidades serán implementadas en el Sprint 3, una vez se incorpore la capa de persistencia y servicios, ya que requieren coordinación entre múltiples entidades y validaciones transaccionales.
 
 **Estado:** `Implementado`
+
+---
+
+## ADR-007 - Implementación de la capa de persistencia con MySQL
+
+### Contexto
+Al finalizar el Sprint 2, el proyecto contaba con un modelo de dominio completamente implementado en Python, donde toda la información existía únicamente en memoria durante la ejecución de la aplicación.
+
+Para continuar con el desarrollo era necesario incorporar una capa de persistencia que permitiera almacenar la información de forma permanente, preparar el proyecto para futuras integraciones con SQLAlchemy y construir una arquitectura escalable siguiendo buenas prácticas de desarrollo.
+
+### Decisión
+Se decidió incorporar MySQL como sistema gestor de bases de datos del proyecto.
+
+Adicionalmente se definieron las siguientes decisiones de arquitectura:
+
+* Utilizar **MySQL Server** como motor de base de datos.
+* Utilizar **MySQL Workbench** para la administración y ejecución de scripts SQL.
+* Mantener todos los scripts SQL versionados dentro de la carpeta `sql/`.
+* Organizar los scripts por responsabilidad (`schema`, `seed` y `queries`).
+* Implementar la persistencia de forma incremental, comenzando por la entidad `Producto`, al ser la de menor complejidad y no depender de otras entidades.
+
+### Justificación
+La implementación progresiva de la persistencia reduce la complejidad del aprendizaje y permite validar cada componente antes de incorporar relaciones entre entidades.
+
+Además, mantener todos los scripts SQL dentro del repositorio garantiza que cualquier desarrollador pueda reconstruir completamente la base de datos utilizando únicamente los archivos versionados del proyecto.
+
+### Beneficios
+* Se incorpora persistencia permanente para el sistema.
+* Se establece una arquitectura preparada para el crecimiento del proyecto.
+* Se garantiza la reproducibilidad de la base de datos mediante scripts SQL.
+* Se facilita el mantenimiento y versionado de los cambios estructurales.
+* Se prepara el proyecto para la integración posterior con SQLAlchemy y el patrón Repository.
+
+### Componentes afectados
+* **Carpetas:**
+  * `database`
+  * `repositories`
+  * `services`
+  * `sql/schema`
+  * `sql/seed`
+  * `sql/queries`
+
+* **Scripts SQL:**
+  * `01_create_database.sql`
+  * `02_create_tables.sql`
+
+* **Infraestructura:**
+  * MySQL Server
+  * MySQL Workbench
+
+## Alcance
+Esta decisión establece únicamente la infraestructura y organización inicial de la capa de persistencia.
+
+La implementación de las tablas, consultas SQL, integración con SQLAlchemy, patrón Repository y persistencia de las entidades se realizará progresivamente durante el Sprint 3.
+
+**Estado:** `Implementado`
+
+---
