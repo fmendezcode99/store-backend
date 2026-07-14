@@ -199,7 +199,7 @@ El proyecto mantiene un historial de commits pequeños y descriptivos siguiendo 
 | Sprint | Estado |
 | :--- | :--- |
 | **Sprint 1** | Completado |
-| **Sprint 2** | En progreso |
-| **Sprint 3** | Pendiente |
+| **Sprint 2** | Completado |
+| **Sprint 3** | En Progreso |
 | **Sprint 4** | Pendiente |
 | **Sprint 5** | Pendiente |
