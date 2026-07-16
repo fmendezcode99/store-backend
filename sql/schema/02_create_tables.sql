@@ -53,7 +53,7 @@ CREATE TABLE productos (
 
     precio_venta DECIMAL(10,2) NOT NULL,
 
-    stock INT NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
 
     estado_activo BOOLEAN NOT NULL DEFAULT TRUE
 

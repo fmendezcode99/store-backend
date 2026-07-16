@@ -19,6 +19,25 @@ Notas:
 ============================================================
 */
 
+USE store_management_db;
+
+INSERT INTO productos (
+    nombre,
+    sku,
+    marca,
+    categoria,
+    costo,
+    precio_venta
+)
+VALUES (
+    'Mouse Logitech G203',
+    'LOG-G203',
+    'Logitech',
+    'Periféricos',
+    70000,
+    95000
+);
+
 /*
 ============================================================
 Fin del archivo: 01_seed_data.sql

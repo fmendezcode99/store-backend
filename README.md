@@ -46,7 +46,7 @@ El objetivo del proyecto es construir progresivamente un sistema de gestión par
 **Estado:** En Progreso
 
 > [!NOTE]
-> **Inicio de la capa de persistencia con MySQL:** El proyecto entra en el Sprint 3, donde se implementará la persistencia de la información. Hasta este momento toda la lógica del negocio se encontraba únicamente en memoria mediante objetos Python.
+> **Inicio de la capa de persistencia con MySQL:** Durante este sprint se inició la implementación de la capa de persistencia utilizando MySQL, incorporando el diseño del esquema inicial de la base de datos y las primeras operaciones SQL sobre la entidad `Producto`.
 
 #### Avances realizados
 * Diseño del modelo de dominio completado.
@@ -56,11 +56,19 @@ El objetivo del proyecto es construir progresivamente un sistema de gestión par
 * Arquitectura preparada para la capa de persistencia.
 * Configuración inicial de MySQL Server y creación de la base de datos `store_management_db`.
 * Organización de scripts SQL para la creación del esquema.
+* Organización de scripts SQL por responsabilidad (`schema`, `seed` y `queries`).
+* Implementación de la tabla `productos` con restricciones de integridad (`PRIMARY KEY`, `AUTO_INCREMENT`, `UNIQUE`, `NOT NULL` y `DEFAULT`).
+* Inserción de datos iniciales mediante scripts de carga (`seed`).
+* Implementación y práctica de las operaciones CRUD básicas (`INSERT`, `SELECT`, `UPDATE` y `DELETE`).
+* Validación de la estructura de la tabla utilizando `DESC productos`.
+
 
 #### Objetivos y Próximos pasos
-* [ ] Aprender SQL básico (DDL y DML).
-* [ ] Implementar las tablas del sistema mediante scripts y organizar scripts de carga inicial.
-* [ ] Comenzar la persistencia por la entidad `Producto` (entidad de menor complejidad).
+* [x] Aprender SQL básico (DDL y DML).
+* [x] Implementar las tablas del sistema mediante scripts y organizar scripts de carga inicial.
+* [x] Comenzar la persistencia por la entidad `Producto` (entidad de menor complejidad).
+* [ ] Continuar con consultas SQL intermedias (`ORDER BY`, `LIMIT`, funciones de agregación y filtros avanzados).
+* [ ] Diseñar e implementar la entidad `Cliente`.
 * [ ] Integrar SQLAlchemy de forma progresiva.
 * [ ] Implementar la capa Repository para separar la lógica de acceso a datos.
 * [ ] Implementación de la capa de servicios y separación de la lógica de negocio del modelo.
@@ -107,13 +115,34 @@ store-backend/
 │   ├── routes/
 │   ├── services/
 │   └── utils/
+│
 ├── docs/
-│   └── adr/
+│   ├── adr/
+│   │   ├── ADR-001.md
+│   │   ├── ADR-002.md
+│   │   ├── ADR-003.md
+│   │   ├── ADR-004.md
+│   │   ├── ADR-005.md
+│   │   ├── ADR-006.md
+│   │   ├── ADR-007.md
+│   │   └── ADR-008.md
+│   │
+│   └── development_environment.md
+│
 ├── sql/
 │   ├── schema/
+│   │   ├── 01_create_database.sql
+│   │   └── 02_create_tables.sql
+│   │
 │   ├── seed/
+│   │   └── 01_seed_data.sql
+│   │
 │   └── queries/
+│       └── 01_select_productos.sql
+│
 ├── tests/
+│
+├── .gitignore
 ├── README.md
 └── requirements.txt
 
@@ -194,6 +223,7 @@ Registros actuales:
 * `ADR-005` - Gestión de los detalles de un pedido mediante composición
 * `ADR-006` - Cálculo dinámico de valores derivados del pedido
 * `ADR-007` - Implementación de la capa de persistencia con MySQL
+* `ADR-008` - Organización de la capa de persistencia mediante scripts SQL
 
 La documentación detallada se encuentra en la ruta:
 ```text

@@ -247,3 +247,58 @@ La implementación de las tablas, consultas SQL, integración con SQLAlchemy, pa
 **Estado:** `Implementado`
 
 ---
+
+## ADR-008 - Organización de la capa de persistencia mediante scripts SQL
+
+### Contexto
+
+Con el inicio del Sprint 3 se incorporó MySQL como motor de base de datos del proyecto. Fue necesario definir una estrategia para organizar los scripts SQL de forma que fueran fáciles de mantener, reutilizar y versionar durante el desarrollo.
+
+Además, se buscó evitar la ejecución manual de instrucciones aisladas en la consola, garantizando que toda modificación de la base de datos quedara registrada dentro del repositorio.
+
+### Decisión
+
+Se decidió organizar los scripts SQL según su responsabilidad:
+
+* `schema/`
+  * Creación de la base de datos.
+  * Creación de tablas.
+
+* `seed/`
+  * Inserción de datos iniciales para pruebas y desarrollo.
+
+* `queries/`
+  * Consultas SQL utilizadas para aprendizaje, validación y pruebas.
+
+Todos los cambios estructurales y de datos deberán implementarse primero en los archivos SQL correspondientes y posteriormente ejecutarse desde MySQL mediante el comando `SOURCE`.
+
+### Justificación
+
+Esta decisión convierte los scripts SQL en la fuente oficial de la estructura de la base de datos, evitando diferencias entre el repositorio y el entorno de ejecución.
+
+La separación por responsabilidades facilita el mantenimiento, mejora la trazabilidad de cambios y permite ejecutar únicamente los scripts necesarios durante el desarrollo.
+
+### Beneficios
+
+* Mantiene una estructura clara y organizada.
+* Favorece el principio de responsabilidad única.
+* Facilita el versionamiento mediante Git.
+* Permite reproducir la base de datos desde cero utilizando únicamente los scripts del proyecto.
+* Reduce el riesgo de cambios manuales no documentados.
+
+### Componentes afectados
+
+* `sql/schema`
+* `sql/seed`
+* `sql/queries`
+* Documentación del proyecto (`README`)
+
+### Alcance
+
+Esta decisión aplica únicamente a la organización de la capa de persistencia durante el desarrollo del proyecto.
+
+La incorporación de SQLAlchemy, migraciones automáticas y el patrón Repository serán abordados en decisiones posteriores.
+
+**Estado:** `Implementado`
+
+---
