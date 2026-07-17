@@ -1,0 +1,35 @@
+version: "1.0.0"
+
+knowledge_base:
+  name: "Store Backend AI Knowledge Base"
+  description: "Project-specific documentation for AI-assisted development."
+
+project:
+  name: "Store Backend"
+
+entry_points:
+  assistant: "assistant.md"
+  index: "index.md"
+  readme: "README.md"
+
+directories:
+  core: "core/"
+  decisions: "decisions/"
+  patterns: "patterns/"
+  prompts: "prompts/"
+  templates: "templates/"
+
+documents:
+  context: "core/context.md"
+  project: "core/project.md"
+  project_status: "core/project-status.md"
+  architecture: "core/architecture.md"
+  workflow: "core/workflow.md"
+  coding_standards: "core/coding-standards.md"
+  tech_stack: "core/tech-stack.md"
+  glossary: "core/glossary.md"
+
+metadata:
+  documentation_language: "English"
+  source_code_language: "English"
+  conversation_language: "Adaptive"
