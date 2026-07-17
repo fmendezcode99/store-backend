@@ -2,11 +2,11 @@
 
 ## Purpose
 
-This document describes the software architecture of the Store Backend project.
+This document defines the architectural principles of the Store Backend project.
 
-Its objective is to ensure that every new feature follows the same architectural principles and that the project evolves consistently over time.
+Its purpose is to ensure that every new feature follows a consistent structure, keeps responsibilities well separated, and contributes to a maintainable and scalable codebase.
 
-Architecture should support maintainability, scalability, and readability.
+Architecture should provide clarity, consistency, and flexibility as the project evolves.
 
 ---
 
@@ -14,11 +14,11 @@ Architecture should support maintainability, scalability, and readability.
 
 The project follows a layered architecture.
 
-Each layer has a single responsibility.
+Each layer has a single, well-defined responsibility and should communicate only with the layers directly below it.
 
-Business rules should remain independent from frameworks and external technologies whenever possible.
+Business rules should remain independent from frameworks, infrastructure, and external technologies whenever practical.
 
-The architecture should evolve gradually as new concepts are learned.
+The architecture should evolve incrementally, introducing additional complexity only when justified by the project's needs.
 
 ---
 
@@ -34,79 +34,68 @@ The architecture follows these principles:
 - Explicit dependencies
 - Incremental evolution
 
-Avoid unnecessary complexity.
+Favor simplicity over premature optimization.
 
 ---
 
-# Current Architecture
+# Architecture Overview
 
-Current project structure:
+The application is organized into independent layers, each responsible for a specific concern.
 
-```text
-app/
-docs/
-sql/
-tests/
-.ai/
-.vscode/
-```
-
-The current architecture is intentionally simple.
-
-As the project grows, responsibilities will be separated into dedicated modules.
-
----
-
-# Target Architecture
-
-The long-term goal is to organize the application as follows:
+A typical project structure is:
 
 ```text
 app/
 │
+├── config/
 ├── database/
-│
 ├── models/
-│
 ├── repositories/
-│
-├── services/
-│
-├── schemas/
-│
 ├── routes/
-│
-├── utils/
-│
-└── config/
+├── schemas/
+├── services/
+└── utils/
 ```
 
-Each directory has one primary responsibility.
+The exact structure may evolve over time, but the separation of responsibilities should remain consistent.
 
 ---
 
 # Layer Responsibilities
 
+## config/
+
+Responsible for centralized application configuration.
+
+Examples include:
+
+- Environment variables
+- Application settings
+- Configuration management
+
+Configuration should not contain business logic.
+
+---
+
 ## database/
 
-Responsible for:
+Responsible for infrastructure related to data persistence.
 
-- Database connection
+Responsibilities include:
+
+- Database connections
 - Session management
-- Configuration
 - Migrations
 
-Business logic does not belong here.
+Business rules do not belong in this layer.
 
 ---
 
 ## models/
 
-Represents business entities.
+Represents the application's domain entities.
 
-Models define the application's data structures.
-
-Models should not contain database access logic.
+Models define the structure of the data but should not contain persistence or business logic.
 
 ---
 
@@ -114,39 +103,39 @@ Models should not contain database access logic.
 
 Responsible for data persistence.
 
-Responsibilities include:
+Typical responsibilities include:
 
 - Queries
 - Inserts
 - Updates
 - Deletes
 
-Repositories communicate with the database.
+Repositories should only manage data access.
 
-Business rules should remain outside this layer.
+They should not implement business rules.
 
 ---
 
 ## services/
 
-Contains business logic.
+Contains the application's business logic.
 
 Responsibilities include:
 
-- Validation
 - Business rules
-- Orchestration
+- Validation
 - Coordination between repositories
+- Application workflows
 
-Services should not know implementation details of the database.
+Services should remain independent of persistence implementation details whenever possible.
 
 ---
 
 ## schemas/
 
-Defines data validation and serialization.
+Responsible for data validation and serialization.
 
-Future responsibilities include:
+Typical responsibilities include:
 
 - Request validation
 - Response serialization
@@ -156,7 +145,7 @@ Future responsibilities include:
 
 ## routes/
 
-Responsible for HTTP endpoints.
+Expose the application's public API.
 
 Routes should:
 
@@ -165,41 +154,27 @@ Routes should:
 - Call services
 - Return responses
 
-Business logic should never be implemented inside routes.
+Routes should remain thin and free of business logic.
 
 ---
 
 ## utils/
 
-Shared utilities used across the application.
+Contains reusable utilities shared across the application.
 
-Examples:
+Examples include:
 
-- Date helpers
-- Formatting
-- Common utilities
+- Date utilities
+- Formatting helpers
+- Generic helper functions
 
-Avoid placing business logic here.
-
----
-
-## config/
-
-Application configuration.
-
-Examples:
-
-- Environment variables
-- Database settings
-- Application settings
-
-Configuration should remain centralized.
+Utilities should never become a container for unrelated code.
 
 ---
 
 # Dependency Direction
 
-Dependencies should always flow downward.
+Dependencies should always flow in one direction:
 
 ```text
 Routes
@@ -211,90 +186,67 @@ Repositories
 Database
 ```
 
-Never reverse this dependency.
+The direction of dependencies should never be reversed.
 
-Repositories should not call services.
+Examples:
 
-Models should not depend on routes.
-
----
-
-# Business Logic
-
-Business rules belong inside the service layer.
-
-Avoid business logic in:
-
-- routes
-- repositories
-- models
-- utilities
-
-Business logic should remain centralized.
+- Routes should not access repositories directly.
+- Repositories should not call services.
+- Services should not depend on routes.
+- Models should remain independent of higher layers whenever possible.
 
 ---
 
-# Database Access
+# Architectural Boundaries
 
-Only repositories should interact directly with the database.
+Each layer should remain focused on its own responsibility.
 
-Avoid SQL inside:
+Avoid:
 
-- services
-- routes
-- utilities
+- Business logic inside routes.
+- SQL inside services.
+- HTTP logic inside repositories.
+- Database access inside utilities.
+- Cross-layer shortcuts that bypass the intended flow.
 
-Centralizing database access improves maintainability.
-
----
-
-# Future Patterns
-
-As the project evolves, the following patterns may be adopted:
-
-- Repository Pattern
-- Service Layer
-- Dependency Injection
-- Factory Pattern
-- Unit of Work (if necessary)
-
-Patterns should only be introduced when they solve an actual problem.
-
-Avoid implementing patterns prematurely.
+Keeping clear boundaries improves maintainability and testability.
 
 ---
 
 # Scalability
 
-The architecture should support:
+The architecture should support future growth without requiring significant restructuring.
 
-- Additional modules
+Examples include:
+
+- New modules
 - Authentication
-- APIs
-- Testing
-- Multiple databases
-- New services
+- Authorization
+- Additional APIs
+- Background tasks
+- Automated testing
+- Multiple data sources
 
-Growth should not require rewriting the entire project.
+New functionality should integrate naturally into the existing architecture.
 
 ---
 
 # AI Expectations
 
-The AI should:
+AI assistants should:
 
-- Respect the existing architecture.
-- Suggest improvements incrementally.
+- Respect the documented architecture.
+- Maintain clear layer responsibilities.
+- Reuse existing architectural patterns.
 - Avoid unnecessary restructuring.
-- Explain architectural decisions.
-- Keep responsibilities separated.
+- Explain architectural decisions when proposing significant changes.
 
-Architecture changes should always have technical justification.
+Architectural changes should always have a clear technical justification.
 
 ---
 
 # Guiding Principle
 
-A developer should be able to understand where new code belongs without guessing.
+A developer should always know where new code belongs.
 
-A clear architecture reduces complexity and improves long-term maintainability.
+A clear architecture reduces complexity, improves maintainability, and enables the project to evolve with confidence.

@@ -2,273 +2,161 @@
 
 ## Purpose
 
-This document defines the standard development workflow for the Store Backend project.
+This document describes the standard development workflow for the Store Backend project.
 
-Its objective is to ensure consistency, maintainability, and continuous learning throughout the project's evolution.
-
-Every feature, bug fix, and refactoring should follow this workflow.
+Its objective is to ensure consistent development practices, maintain documentation quality, and keep the AI Knowledge Base synchronized with significant project changes.
 
 ---
 
-# Development Philosophy
+# Development Lifecycle
 
-Development is an iterative process.
+Every development session follows the same high-level workflow:
 
-Do not rush to write code.
-
-Always follow this sequence:
-
-1. Understand
-2. Design
-3. Implement
-4. Verify
-5. Review
-6. Document
-7. Commit (Developer Decision)
-
-Every step has value.
-
----
-
-# Standard Workflow
-
-## Step 1 — Understand the Problem
-
-Before writing code:
-
-- Understand the objective.
-- Identify requirements.
-- Ask questions if something is unclear.
-- Avoid assumptions.
-
-The AI should prioritize understanding over implementation.
-
----
-
-## Step 2 — Design the Solution
-
-Before implementation:
-
-- Explain the proposed solution.
-- Identify affected modules.
-- Consider alternative approaches.
-- Choose the simplest maintainable solution.
-
-Architecture comes before implementation.
+```text
+Start Development Session
+            │
+            ▼
+     Read manifest.yaml
+            │
+            ▼
+Load Required Knowledge Base Documents
+            │
+            ▼
+      Analyze the Task
+            │
+            ▼
+    Implement the Solution
+            │
+            ▼
+        Run Tests
+            │
+            ▼
+Update Documentation (if needed)
+            │
+            ▼
+Update AI Knowledge Base (if project knowledge changed)
+            │
+            ▼
+      Review Changes
+            │
+            ▼
+      Commit Changes
+            │
+            ▼
+        Push Changes
+```
 
 ---
 
-## Step 3 — Implement
+# Session Initialization
 
-Implementation should be:
+Before implementing any change:
 
-- Incremental
-- Readable
-- Well-structured
-- Easy to review
+1. Read `manifest.yaml`.
+2. Load only the documentation required for the current task.
+3. Review existing architecture and coding standards.
+4. Understand the requested change before writing code.
 
-Avoid large changes.
-
-Prefer multiple small improvements.
+Avoid loading unnecessary documentation.
 
 ---
 
-## Step 4 — Verify
+# Implementation Guidelines
 
-After implementation:
+During implementation:
 
-Verify:
-
-- Correctness
-- Readability
-- Type hints
-- Naming
-- Error handling
-- Consistency
-
-Never assume the code is correct without reviewing it.
+- Respect the documented architecture.
+- Follow the project's coding standards.
+- Reuse existing patterns whenever possible.
+- Prefer simple and maintainable solutions.
+- Avoid duplicated code.
+- Keep responsibilities clearly separated.
 
 ---
 
-## Step 5 — Review
+# Testing
 
-Every implementation should receive a technical review.
+Before completing a task:
 
-Review should include:
-
-- Code quality
-- Maintainability
-- Simplicity
-- Possible improvements
-- Best practices
-
-Reviews should be constructive.
+- Verify that the implementation behaves as expected.
+- Run the available tests.
+- Fix issues before committing changes.
 
 ---
 
-## Step 6 — Documentation
+# Documentation Updates
 
-Documentation should evolve together with the project.
+Documentation should only be updated when the project's knowledge changes.
 
-Update documentation whenever:
+Examples include:
 
-- Architecture changes
-- New modules are added
-- New technologies are introduced
-- Development workflow changes
-- Important decisions are made
+- Architectural changes.
+- New design patterns.
+- Technology stack updates.
+- Workflow modifications.
+- New project conventions.
+- Significant technical decisions.
 
-Documentation is part of development.
-
----
-
-## Step 7 — Git
-
-Git decisions always belong to the developer.
-
-The AI must never decide:
-
-- when to commit
-- what to commit
-- when to merge
-- when to push
-
-The AI may:
-
-- explain Git concepts
-- review staged changes
-- suggest commit messages
-- explain merge conflicts
-
-Repository history belongs to the developer.
+Routine feature implementation does not require updating the Knowledge Base.
 
 ---
 
-# Branch Strategy
+# Git Workflow
 
-The project follows a simple branching strategy.
+A typical Git workflow is:
 
-Main branches:
+```text
+git pull
 
-- main
-- feature/\*
+↓
 
-Examples:
+Implement changes
 
-feature/database
+↓
 
-feature/sqlalchemy
+Run tests
 
-feature/authentication
+↓
 
-feature/testing
+Review changes
 
-Feature branches should remain focused on a single objective.
+↓
 
----
+git add
 
-# Change Scope
+↓
 
-Every change should have a clear objective.
+git commit
 
-Avoid:
+↓
 
-- unrelated refactoring
-- unnecessary cleanup
-- modifying unrelated modules
-- mixing multiple features in one implementation
+git push
+```
 
-Keep pull-sized changes even when working locally.
+Commit messages should follow the project's commit convention.
 
 ---
 
-# AI Responsibilities During Development
+# AI Knowledge Base
 
-The AI should:
+The AI Knowledge Base is maintained alongside the software.
 
-- Explain before implementing.
-- Ask questions when requirements are unclear.
-- Respect the existing architecture.
-- Encourage clean code.
-- Recommend best practices.
-- Suggest improvements with technical justification.
+It should only be updated when project-specific knowledge evolves.
 
-The AI should never take control of the project.
+Examples include:
 
----
+- New architectural decisions.
+- New reusable patterns.
+- Changes to development standards.
+- Updates to the project workflow.
+- Technology stack changes.
 
-# Error Handling Philosophy
-
-Mistakes are learning opportunities.
-
-When errors occur:
-
-- Explain the cause.
-- Explain the impact.
-- Explain how to fix them.
-- Explain how to avoid them in the future.
-
-Avoid simply providing corrected code.
-
----
-
-# Decision Making
-
-When multiple valid solutions exist:
-
-Present:
-
-- Option A
-- Option B
-
-Explain:
-
-- Advantages
-- Disadvantages
-- Trade-offs
-
-The final decision belongs to the developer.
-
----
-
-# Incremental Development
-
-Prefer:
-
-Small improvements completed frequently.
-
-Avoid:
-
-Large rewrites.
-
-The project should continuously improve without becoming unstable.
-
----
-
-# Definition of Success
-
-A successful implementation is one that:
-
-- Works correctly.
-- Is understandable.
-- Follows project standards.
-- Fits the architecture.
-- Can be maintained easily.
-- Helps the developer learn something new.
-
-Working software is important.
-
-Understandable software is the ultimate goal.
+Normal feature development should not require modifications to the Knowledge Base.
 
 ---
 
 # Guiding Principle
 
-Leave the project better than you found it.
+The development workflow should remain simple, consistent, and maintainable.
 
-Every contribution should improve:
-
-- the code
-- the documentation
-- the architecture
-- or the developer's knowledge.
+Documentation supports development, but it should never become an obstacle to delivering software.

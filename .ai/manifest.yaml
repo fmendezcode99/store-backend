@@ -3,9 +3,12 @@ version: "1.0.0"
 knowledge_base:
   name: "Store Backend AI Knowledge Base"
   description: "Project-specific documentation for AI-assisted development."
+  language: "English"
+  source_of_truth: true
 
 project:
   name: "Store Backend"
+  repository: "store-backend"
 
 entry_points:
   assistant: "assistant.md"
@@ -29,7 +32,56 @@ documents:
   tech_stack: "core/tech-stack.md"
   glossary: "core/glossary.md"
 
+load_order:
+  - "core/context.md"
+  - "core/project.md"
+  - "core/project-status.md"
+  - "core/architecture.md"
+  - "core/workflow.md"
+  - "core/coding-standards.md"
+  - "core/tech-stack.md"
+  - "core/glossary.md"
+
+resolution_priority:
+  - "core/coding-standards.md"
+  - "core/architecture.md"
+  - "core/workflow.md"
+  - "core/tech-stack.md"
+  - "core/project-status.md"
+  - "core/glossary.md"
+  - "core/project.md"
+  - "core/context.md"
+
+development_workflow:
+  initialization:
+    - "Read manifest.yaml"
+    - "Read assistant.md"
+    - "Load required project documentation"
+
+  implementation:
+    - "Reuse existing documented patterns"
+    - "Respect architectural decisions"
+    - "Follow coding standards"
+
+  completion:
+    - "Recommend documentation updates"
+    - "Keep the Knowledge Base synchronized"
+
+documentation:
+  ai_language: "English"
+  human_language: "Spanish"
+
 metadata:
-  documentation_language: "English"
   source_code_language: "English"
   conversation_language: "Adaptive"
+
+maintenance:
+  update_required_when:
+    - "Architecture changes"
+    - "Project structure changes"
+    - "New design patterns are introduced"
+    - "Workflow changes"
+    - "Technology stack changes"
+    - "Technical decisions change"
+
+guiding_principle: "The AI Knowledge Base is the single source of truth for project-specific knowledge."

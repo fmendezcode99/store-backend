@@ -9,230 +9,185 @@ Its purpose is to explain:
 - What technologies are used.
 - Why they were selected.
 - What responsibility each technology has.
-- When new technologies should be introduced.
+- How the technology stack is expected to evolve.
 
 Every technology included in this project should have a clear purpose.
 
-Avoid adding technologies simply because they are popular.
+Avoid introducing technologies simply because they are popular.
 
 ---
 
 # Technology Philosophy
 
-The project follows these principles:
+Technology decisions follow these principles:
 
 - Learn one technology at a time.
 - Understand before adopting.
-- Prefer stable technologies.
-- Minimize dependencies.
-- Build on previous knowledge.
+- Prefer stable and well-supported technologies.
+- Minimize unnecessary dependencies.
+- Build upon previously acquired knowledge.
 
-New technologies should solve an actual problem.
+Every new technology should solve a real problem.
 
 ---
 
-# Programming Language
+# Current Stack
 
 ## Python
 
-Purpose
+**Purpose**
 
-The primary programming language for the backend.
+Primary programming language.
 
-Responsibilities
+**Responsibilities**
 
 - Business logic
 - Application logic
-- Data processing
 - API implementation
+- Data processing
 - Automation
 
 Python is the foundation of the project.
 
 ---
 
-# Database
-
 ## MySQL
 
-Purpose
+**Purpose**
 
 Primary relational database.
 
-Responsibilities
+**Responsibilities**
 
 - Data persistence
 - Relationships
 - Constraints
 - Transactions
 
-Database design should prioritize normalization and maintainability.
+Database design should prioritize normalization, integrity, and maintainability.
 
 ---
 
-# Containerization
-
 ## Podman
 
-Purpose
+**Purpose**
 
-Container management.
+Container runtime.
 
-Responsibilities
+**Responsibilities**
 
 - Database containers
 - Development environment
 - Service isolation
 
-Podman replaces Docker as the preferred container runtime.
+Podman is the project's standard container solution.
 
 ---
 
-# Version Control
-
 ## Git
 
-Purpose
+**Purpose**
 
-Source code version control.
+Version control.
 
-Responsibilities
+**Responsibilities**
 
-- History
-- Branches
-- Collaboration
+- Source history
+- Branch management
 - Change tracking
+- Collaboration
 
-Git decisions always belong to the developer.
+Git decisions remain under developer control.
 
 ---
 
 ## GitHub
 
-Purpose
+**Purpose**
 
 Remote repository hosting.
 
-Responsibilities
+**Responsibilities**
 
-- Repository backup
+- Repository hosting
 - Collaboration
 - Portfolio
-- Future CI/CD
+- Future CI/CD integration
 
 ---
 
-# Development Environment
-
 ## Fedora Linux
 
-Purpose
+**Purpose**
 
-Primary operating system.
+Primary development operating system.
 
-Responsibilities
+**Responsibilities**
 
-- Development
+- Local development
 - Container management
-- Local environment
+- Development environment
 
 ---
 
 ## Visual Studio Code
 
-Purpose
+**Purpose**
 
 Primary development environment.
 
-Responsibilities
+**Responsibilities**
 
-- Editing
+- Source editing
 - Debugging
 - Extensions
 - Local AI integration
 
 ---
 
-# Local AI
-
 ## Ollama
 
-Purpose
+**Purpose**
 
 Run local language models.
 
-Responsibilities
+**Responsibilities**
 
 - Code assistance
-- Explanations
-- Code review
 - Documentation support
+- Code review
+- Technical explanations
 
-Local AI should assist development but never replace critical thinking.
-
----
-
-## Language Models
-
-Current models may evolve over time.
-
-The assistant should use the model configured by the developer.
-
-Model-specific behavior should never affect project architecture.
+AI is a development assistant, not a replacement for engineering judgment.
 
 ---
 
-# Current Learning Stage
+# AI Models
 
-Current technologies in active use:
+Language models may change over time.
 
-- Python
-- MySQL
-- Podman
-- Git
-- GitHub
-- VS Code
-- Ollama
+The project does not depend on any specific model.
 
-These technologies form the foundation of the project.
+Model selection should never influence:
+
+- Project architecture
+- Coding standards
+- Technical decisions
+- Software design
 
 ---
 
 # Planned Technologies
 
-The following technologies will be introduced progressively.
-
-## SQLAlchemy
-
-Purpose
-
-Object Relational Mapping (ORM)
-
-Reason
-
-Improve database abstraction while maintaining SQL knowledge.
-
----
-
-## Alembic
-
-Purpose
-
-Database migrations.
-
-Reason
-
-Version database schema changes.
-
----
+The following technologies are expected to be introduced as the project evolves.
 
 ## FastAPI
 
-Purpose
+**Purpose**
 
 REST API framework.
 
-Reason
+**Reason**
 
 Expose backend functionality through HTTP endpoints.
 
@@ -240,35 +195,59 @@ Expose backend functionality through HTTP endpoints.
 
 ## Pydantic
 
-Purpose
+**Purpose**
 
 Data validation.
 
-Reason
+**Reason**
 
 Validate requests and responses.
 
 ---
 
+## SQLAlchemy
+
+**Purpose**
+
+Object Relational Mapping (ORM).
+
+**Reason**
+
+Improve database abstraction while preserving SQL knowledge.
+
+---
+
+## Alembic
+
+**Purpose**
+
+Database migrations.
+
+**Reason**
+
+Version and manage schema changes.
+
+---
+
 ## Pytest
 
-Purpose
+**Purpose**
 
 Testing framework.
 
-Reason
+**Reason**
 
-Automated testing.
+Automate testing and improve software quality.
 
 ---
 
 ## JWT
 
-Purpose
+**Purpose**
 
 Authentication.
 
-Reason
+**Reason**
 
 Secure API endpoints.
 
@@ -276,25 +255,25 @@ Secure API endpoints.
 
 ## CI/CD
 
-Purpose
+**Purpose**
 
-Continuous Integration and Deployment.
+Continuous Integration and Continuous Deployment.
 
-Reason
+**Reason**
 
-Automate quality assurance and deployment.
+Automate testing, quality assurance, and deployment.
 
 ---
 
-# Dependency Policy
+# Technology Selection Criteria
 
 Before introducing any new technology, evaluate:
 
 - Does it solve a real problem?
 - Is it actively maintained?
-- Is it widely adopted?
+- Is it mature and widely adopted?
 - Does it improve maintainability?
-- Can the Standard Library solve the same problem?
+- Can the Python Standard Library solve the same problem?
 
 Avoid unnecessary dependencies.
 
@@ -302,28 +281,26 @@ Avoid unnecessary dependencies.
 
 # Technology Evolution
 
-The stack should evolve gradually.
+The technology stack should evolve gradually.
 
-Do not introduce multiple major technologies simultaneously.
+Introduce new technologies only when they become necessary.
 
-Learning should remain progressive.
-
-Each new technology should build upon previous knowledge.
+Each addition should integrate naturally with the existing architecture and development workflow.
 
 ---
 
 # AI Expectations
 
-The AI should:
+AI assistants should:
 
-- Recommend technologies only when appropriate.
-- Explain why a technology is useful.
-- Avoid unnecessary frameworks.
-- Respect the current learning stage.
-- Never introduce technologies outside the roadmap unless requested.
+- Respect the current technology stack.
+- Recommend new technologies only when technically justified.
+- Explain the advantages and trade-offs of new technologies.
+- Avoid unnecessary frameworks and dependencies.
+- Follow the project's technology roadmap whenever applicable.
 
 ---
 
 # Guiding Principle
 
-Every technology in this repository should exist because it solves a problem—not because it follows a trend.
+Every technology in this repository should exist because it solves a problem, improves maintainability, or supports the project's learning objectives—not because it follows a trend.

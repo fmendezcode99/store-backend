@@ -4,7 +4,7 @@
 
 This document defines the coding standards for the Store Backend project.
 
-The objective is to produce code that is:
+Its objective is to produce code that is:
 
 - Readable
 - Consistent
@@ -24,6 +24,14 @@ Always prefer:
 - Explicit code over implicit behavior.
 - Simplicity over unnecessary abstraction.
 - Small improvements over large rewrites.
+- Composition over unnecessary inheritance.
+- Reuse over duplication.
+
+Follow these principles whenever applicable:
+
+- KISS (Keep It Simple, Stupid)
+- DRY (Don't Repeat Yourself)
+- YAGNI (You Aren't Gonna Need It)
 
 Code should be written for humans first and computers second.
 
@@ -45,7 +53,9 @@ When multiple valid solutions exist, prefer the one that is easier to read.
 
 ## Variables
 
-Use:
+Use descriptive snake_case names.
+
+Good:
 
 ```python
 user_name
@@ -67,9 +77,9 @@ Names should clearly express intent.
 
 ## Functions
 
-Functions should describe an action.
+Function names should describe an action.
 
-Examples:
+Good:
 
 ```python
 create_user()
@@ -78,7 +88,7 @@ calculate_total()
 validate_email()
 ```
 
-Avoid:
+Avoid generic names such as:
 
 ```python
 data()
@@ -87,7 +97,7 @@ execute()
 run()
 ```
 
-Use verbs.
+Use verbs whenever possible.
 
 ---
 
@@ -104,11 +114,13 @@ DatabaseConnection
 ShoppingCart
 ```
 
+Each class should represent a single concept.
+
 ---
 
 ## Constants
 
-Use uppercase.
+Use uppercase with underscores.
 
 ```python
 MAX_RETRIES = 3
@@ -120,7 +132,9 @@ API_VERSION = "v1"
 
 ## Modules
 
-Use lowercase.
+Use lowercase snake_case.
+
+Examples:
 
 ```text
 database.py
@@ -146,7 +160,7 @@ Avoid:
 def create_user(name, age):
 ```
 
-Explicit types improve readability and tooling.
+Explicit types improve readability, tooling, and static analysis.
 
 ---
 
@@ -157,7 +171,8 @@ Functions should:
 - Have one responsibility.
 - Be easy to understand.
 - Return predictable values.
-- Avoid side effects when possible.
+- Minimize side effects whenever possible.
+- Remain reasonably small.
 
 Prefer:
 
@@ -175,19 +190,22 @@ calculate_total_and_save_to_database()
 
 # Classes
 
-Classes should represent a single concept.
+Classes should:
 
-Avoid classes with multiple unrelated responsibilities.
+- Represent one concept.
+- Have one primary responsibility.
+- Hide implementation details.
+- Collaborate through well-defined interfaces.
 
-Prefer composition over inheritance when appropriate.
+Prefer composition over inheritance whenever appropriate.
 
 ---
 
 # Comments
 
-Write comments only when necessary.
+Write comments only when they add value.
 
-Do not explain what obvious code does.
+Avoid explaining obvious code.
 
 Bad:
 
@@ -208,7 +226,7 @@ Explain _why_, not _what_.
 
 # Docstrings
 
-Public classes and functions should include docstrings when they provide reusable behavior.
+Public modules, classes, and reusable functions should include concise docstrings.
 
 Example:
 
@@ -217,11 +235,13 @@ def calculate_total(items: list[Item]) -> Decimal:
     """Calculate the total price of all items."""
 ```
 
+Docstrings should describe purpose, not implementation details.
+
 ---
 
 # Imports
 
-Use the following order:
+Organize imports in the following order:
 
 1. Standard Library
 2. Third-party packages
@@ -266,7 +286,7 @@ Avoid:
 except:
 ```
 
-Catch only exceptions you can handle.
+Catch only exceptions that can be handled meaningfully.
 
 ---
 
@@ -274,9 +294,9 @@ Catch only exceptions you can handle.
 
 Prefer logging over print statements.
 
-Temporary print statements are acceptable during development but should be removed before considering the work complete.
+Temporary print statements are acceptable during development but should be removed before completing the task.
 
-Future logging should use Python's logging module.
+Use Python's `logging` module for application logging.
 
 ---
 
@@ -298,7 +318,7 @@ FROM products
 WHERE active = TRUE;
 ```
 
-Avoid one-line SQL queries.
+Avoid one-line SQL queries whenever readability suffers.
 
 ---
 
@@ -306,7 +326,7 @@ Avoid one-line SQL queries.
 
 Tables:
 
-Plural nouns.
+Use plural nouns.
 
 Examples:
 
@@ -316,7 +336,7 @@ Examples:
 
 Columns:
 
-snake_case
+Use snake_case.
 
 Examples:
 
@@ -326,22 +346,27 @@ Examples:
 
 Primary keys:
 
+```text
 id
+```
 
 Foreign keys:
 
+```text
 user_id
 product_id
+```
 
 ---
 
 # File Organization
 
-One responsibility per file.
+Each file should have one primary responsibility.
 
-One primary class per file when appropriate.
+When appropriate:
 
-Avoid large files.
+- One primary class per file.
+- Related helper functions may remain together.
 
 Split files before they become difficult to navigate.
 
@@ -349,7 +374,7 @@ Split files before they become difficult to navigate.
 
 # Code Organization
 
-Prefer this order inside modules:
+Prefer the following order inside modules:
 
 1. Constants
 2. Classes
@@ -362,9 +387,7 @@ Maintain a predictable structure.
 
 # Dependencies
 
-Before introducing a dependency:
-
-Ask:
+Before introducing a dependency, ask:
 
 - Is it necessary?
 - Can the standard library solve this?
@@ -386,8 +409,9 @@ Review code for:
 - Error handling
 - Maintainability
 - Simplicity
+- Architectural consistency
 
-Do not focus only on whether the code works.
+Code quality is more important than simply making the code work.
 
 ---
 
@@ -395,9 +419,9 @@ Do not focus only on whether the code works.
 
 Refactor only when it clearly improves:
 
-- readability
-- maintainability
-- architecture
+- Readability
+- Maintainability
+- Architecture
 
 Avoid refactoring unrelated code while implementing a feature.
 
@@ -405,13 +429,13 @@ Avoid refactoring unrelated code while implementing a feature.
 
 # AI Expectations
 
-The AI should:
+AI assistants should:
 
 - Follow these standards in every code suggestion.
-- Explain when a standard is intentionally not followed.
-- Recommend improvements respectfully.
-- Prioritize readability.
-- Respect the project's existing architecture.
+- Respect the documented architecture.
+- Explain intentional deviations from these standards.
+- Recommend improvements incrementally.
+- Prioritize readability and maintainability.
 
 ---
 
@@ -419,4 +443,4 @@ The AI should:
 
 Write code that another developer can understand quickly without additional explanation.
 
-Readable code is professional code.
+Readable, consistent, and maintainable code is professional code.

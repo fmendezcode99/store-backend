@@ -2,17 +2,17 @@
 
 ## Vision
 
-Store Backend is a long-term backend engineering project designed to learn professional software development while building a production-quality portfolio.
+Store Backend is a long-term backend engineering project created to learn professional software development while building a production-quality portfolio.
 
-The project emphasizes continuous learning, clean architecture, maintainable code, and disciplined development practices.
+The project combines continuous learning with real-world engineering practices, emphasizing clean architecture, maintainable code, disciplined development, and comprehensive documentation.
 
 ---
 
 # Mission
 
-Develop a backend application that demonstrates professional engineering practices while progressively mastering modern backend technologies.
+Develop a backend application that demonstrates professional software engineering practices while progressively mastering modern backend technologies.
 
-Learning and code quality are equally important.
+The project prioritizes understanding, maintainability, and long-term growth over rapid feature development.
 
 ---
 
@@ -25,24 +25,44 @@ The project aims to:
 - Build a portfolio-ready backend application.
 - Improve technical decision-making.
 - Develop maintainable and scalable software.
+- Document architectural knowledge throughout the project's lifecycle.
 
 ---
 
 # Scope
 
-This repository focuses on backend development.
+This repository focuses exclusively on backend development.
 
 Areas included:
 
 - Database design
 - Business logic
-- REST APIs
-- Authentication
+- REST API development
+- Authentication and authorization
+- Data persistence
 - Testing
 - Deployment
-- Documentation
+- Technical documentation
+- AI-assisted development
 
-Frontend development is outside the primary scope.
+Areas outside the primary scope:
+
+- Frontend development
+- Mobile applications
+- UI/UX design
+
+---
+
+# Project Principles
+
+Development follows these principles:
+
+- Build incrementally.
+- Prefer simple solutions.
+- Maintain clear separation of responsibilities.
+- Keep documentation synchronized with the implementation.
+- Reuse existing patterns whenever possible.
+- Prioritize maintainability over unnecessary complexity.
 
 ---
 
@@ -52,9 +72,10 @@ The project is successful when:
 
 - The architecture remains consistent.
 - Code quality improves continuously.
-- Documentation stays current.
-- Every implemented feature is understood.
-- The repository demonstrates professional development practices.
+- Documentation stays synchronized with the implementation.
+- Every implemented feature is fully understood.
+- Technical decisions are documented.
+- The repository demonstrates professional software engineering practices.
 
 ---
 
@@ -68,6 +89,8 @@ The project values:
 - Continuous learning
 - Incremental improvement
 - Technical excellence
+- Consistency
+- Knowledge sharing
 
 ---
 
@@ -75,4 +98,4 @@ The project values:
 
 Build a complete backend application that can confidently be presented as a professional portfolio project for junior backend developer positions.
 
-The project should reflect both technical competence and disciplined software engineering practices.
+Beyond delivering software, the project aims to demonstrate disciplined engineering practices, effective documentation, and the responsible use of AI-assisted development as part of a modern software development workflow.

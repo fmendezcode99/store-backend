@@ -2,11 +2,24 @@
 
 ## Purpose
 
-This directory contains the AI Knowledge Base for the Store Backend project.
+This directory contains the AI Knowledge Base for the **Store Backend** project.
 
-It provides structured, project-specific documentation that helps AI assistants and developers work consistently throughout the project's lifecycle.
+It provides structured, project-specific documentation that enables AI assistants and developers to work consistently throughout the project's lifecycle.
 
-The Knowledge Base is designed to evolve alongside the project while remaining organized, maintainable, and easy to navigate.
+The Knowledge Base evolves alongside the project while remaining organized, maintainable, and easy to navigate.
+
+---
+
+# Objectives
+
+The AI Knowledge Base aims to:
+
+- Provide consistent project context across development sessions.
+- Reduce repeated explanations and duplicated information.
+- Preserve architectural and technical knowledge.
+- Promote consistent development practices.
+- Improve long-term maintainability.
+- Support AI-assisted software development through structured documentation.
 
 ---
 
@@ -15,12 +28,13 @@ The Knowledge Base is designed to evolve alongside the project while remaining o
 This Knowledge Base follows these principles:
 
 - Single Responsibility Principle (SRP)
+- Single Source of Truth
 - No duplicated information
 - Modular documentation
 - Incremental evolution
 - Clear ownership of information
 
-Every document should answer one specific question.
+Every document should answer one specific question and have a clearly defined responsibility.
 
 ---
 
@@ -77,61 +91,117 @@ Every document should answer one specific question.
 
 Contains the documentation required to understand and navigate the Knowledge Base.
 
+Files include:
+
 - README
 - index
 - assistant
+- manifest
 
 ---
 
 ## Core
 
-Contains the permanent project documentation.
+Contains the permanent documentation that defines the project.
 
-Examples:
+Examples include:
 
+- Project context
 - Architecture
 - Workflow
-- Coding Standards
-- Technology Stack
+- Coding standards
+- Technology stack
+- Project status
+- Glossary
+
+This documentation represents the project's long-term knowledge.
 
 ---
 
 ## Decisions
 
-Contains Architecture Decision Records (ADRs).
+Contains technical decisions and project conventions that AI assistants should follow during development.
 
-Documents explain:
+Examples include:
 
-- Why decisions were made
-- Alternatives considered
-- Consequences
+- Folder organization
+- Dependency management
+- Naming conventions
+
+These documents explain how the project is organized and why those conventions exist.
 
 ---
 
 ## Patterns
 
-Documents architectural and design patterns implemented in the project.
+Documents reusable architectural and design patterns implemented throughout the project.
+
+Examples include:
+
+- Repository Pattern
+- Service Layer
+- Clean Architecture
+
+Patterns should be reused instead of creating new implementations whenever applicable.
 
 ---
 
 ## Prompts
 
-Contains reusable prompts for AI-assisted development.
+Contains reusable prompts that support common AI-assisted development tasks.
+
+Examples include:
+
+- Code reviews
+- SQL reviews
+- Documentation generation
+- Architecture analysis
+- Learning sessions
+
+Prompts should remain generic enough to be reused across multiple development sessions.
+
+---
+
+## Templates
+
+Provides standardized templates used to create new documentation while maintaining consistency across the Knowledge Base.
+
+---
+
+# How AI Assistants Should Use This Knowledge Base
+
+Before generating code or making architectural decisions, AI assistants should:
+
+1. Read `manifest.yaml`.
+2. Load the required documents specified in the manifest.
+3. Use `core/` as the primary source of project context.
+4. Consult `decisions/` before suggesting structural changes.
+5. Reuse documented patterns whenever possible.
+6. Avoid duplicating existing documentation or business logic.
+7. Update the Knowledge Base whenever significant project changes occur.
 
 ---
 
 # Maintenance
 
-Whenever the project evolves:
+The Knowledge Base should evolve together with the software.
 
-- Update existing documentation.
+Whenever the project changes:
+
+- Update existing documentation whenever possible.
 - Avoid duplicated information.
 - Create new documents only when they have a clear responsibility.
+- Keep documentation concise and maintainable.
+- Remove obsolete information when it is no longer relevant.
 
-Documentation should evolve together with the software.
+Documentation maintenance is considered part of the development process.
 
 ---
 
 # Guiding Principle
 
-The Knowledge Base is the single source of truth for project-specific knowledge.
+The AI Knowledge Base is the single source of truth for project-specific knowledge.
+
+Whenever documentation conflicts with previous conversations, assumptions, or generated context, the Knowledge Base takes precedence.
+
+All AI-assisted development should rely on this documentation to ensure consistency, maintainability, and alignment with the project's architecture.

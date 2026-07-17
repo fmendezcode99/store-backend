@@ -70,6 +70,7 @@ Introduces the AI Knowledge Base.
 Read this document first to understand:
 
 - Purpose
+- Objectives
 - Design principles
 - Directory structure
 - Documentation philosophy
@@ -109,17 +110,19 @@ Use this document to locate project documentation efficiently.
 
 ### Purpose
 
-Contains structured metadata describing the Knowledge Base.
+Defines how the AI Knowledge Base should be loaded and interpreted.
 
-This file is intended for AI agents and tools that need to discover the documentation structure programmatically.
+This file is the primary entry point for AI assistants and tools.
 
-It defines:
+It contains:
 
 - Knowledge Base metadata
 - Entry points
 - Directory structure
 - Document locations
-- Documentation language
+- Document loading order
+- Documentation languages
+- Knowledge Base workflow metadata
 
 ---
 
@@ -196,9 +199,9 @@ Defines the project's development workflow.
 Consult this document for:
 
 - Development lifecycle
-- Branch strategy
-- Code review process
-- Definition of Done
+- Session workflow
+- Git workflow
+- Documentation workflow
 
 ---
 
@@ -253,14 +256,15 @@ Consult this document for:
 
 ## decisions/
 
-Contains Architecture Decision Records (ADRs).
+Contains technical decisions and project conventions used during development.
 
-Consult this directory to understand:
+Examples include:
 
-- Why technical decisions were made
-- Alternatives considered
-- Trade-offs
-- Consequences
+- Dependency management
+- Folder organization
+- Naming conventions
+
+Consult this directory before introducing structural or organizational changes to the project.
 
 ---
 
@@ -272,9 +276,6 @@ Examples include:
 
 - Repository Pattern
 - Service Layer
-- Dependency Injection
-- Factory Pattern
-- Unit of Work
 - Clean Architecture
 
 Consult this directory before implementing an existing pattern.
@@ -289,11 +290,9 @@ Examples include:
 
 - Code Review
 - SQL Review
-- Debugging
-- Testing
 - Documentation
-- Refactoring
 - Architecture Review
+- Learning Sessions
 
 Consult this directory when performing specialized AI workflows.
 
@@ -342,11 +341,12 @@ Use these templates whenever creating new documentation to ensure consistency ac
 
 Before consulting documentation:
 
-1. Identify the task.
-2. Open the appropriate document using this index.
-3. Read only the documentation required for the task.
-4. Avoid consulting unrelated documents.
-5. If multiple documents apply, follow the priority defined in `assistant.md`.
+1. Read `manifest.yaml`.
+2. Identify the current task.
+3. Open the appropriate document using this index.
+4. Read only the documentation required for the task.
+5. Avoid consulting unrelated documents.
+6. If multiple documents apply, follow the priority defined in `assistant.md`.
 
 ---
 
@@ -365,6 +365,6 @@ Every document should:
 
 # Guiding Principle
 
-The Knowledge Base is the single source of truth for project-specific knowledge.
+The AI Knowledge Base is the single source of truth for project-specific knowledge.
 
 Use the smallest amount of documentation necessary to complete the current task while maintaining consistency across the entire project.

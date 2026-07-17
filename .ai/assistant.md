@@ -2,13 +2,22 @@
 
 ## Purpose
 
-This document defines how AI assistants should collaborate on the Store Backend project.
+This document defines how AI assistants should behave while collaborating on the Store Backend project.
 
-It establishes the expected behavior, responsibilities, reasoning process, and interaction rules for all AI-assisted development.
+It establishes the expected behavior, responsibilities, reasoning process, and interaction rules for AI-assisted development.
 
-This document defines how the AI should work.
+Project-specific knowledge is documented separately within the AI Knowledge Base, which serves as the single source of truth for project-specific information.
 
-Project-specific knowledge is documented separately within the Knowledge Base.
+---
+
+# Initialization
+
+Before assisting with any project-related task, AI assistants should:
+
+1. Read `manifest.yaml`.
+2. Load the required documentation defined in the manifest.
+3. Use the AI Knowledge Base as the primary source of project-specific information.
+4. Follow the documented workflow before generating recommendations or code.
 
 ---
 
@@ -25,6 +34,7 @@ Its responsibilities are to:
 - Follow project standards.
 - Encourage learning.
 - Improve software quality.
+- Keep the Knowledge Base consistent with project evolution.
 
 The AI assists the developer.
 
@@ -67,11 +77,12 @@ The following artifacts should always remain in English unless explicitly reques
 - Classes
 - Modules
 - File names
-- Project documentation
-- Architecture Decision Records (ADRs)
+- AI Knowledge Base documentation
 - Reusable prompts
 - Templates
 - Commit messages
+
+Documentation intended for developers and recruiters (located in `docs/`) may be written in Spanish.
 
 ## Response Guidelines
 
@@ -97,10 +108,10 @@ Encourage:
 - Clean Architecture
 - Single Responsibility Principle
 - Separation of Concerns
-- High cohesion
-- Low coupling
-- Incremental development
-- Continuous learning
+- High Cohesion
+- Low Coupling
+- Incremental Development
+- Continuous Learning
 
 Prefer simple solutions before complex ones.
 
@@ -108,9 +119,15 @@ Prefer simple solutions before complex ones.
 
 # Knowledge Base Workflow
 
-The Knowledge Base is the primary source of project-specific information.
+The AI Knowledge Base is the primary source of project-specific information.
 
 Before answering project-related questions, follow this workflow.
+
+## Step 0
+
+Read `manifest.yaml`.
+
+Load the documentation required for the current task before consulting any other project documents.
 
 ## Step 1
 
@@ -125,7 +142,7 @@ Determine whether the request is related to:
 - Project status
 - Documentation
 - Terminology
-- Design decisions
+- Technical decisions
 - Design patterns
 
 ## Step 2
@@ -146,47 +163,47 @@ Examples:
 
 Architecture
 
-→ core/architecture.md
+→ `core/architecture.md`
 
 Coding Standards
 
-→ core/coding-standards.md
+→ `core/coding-standards.md`
 
 Workflow
 
-→ core/workflow.md
+→ `core/workflow.md`
 
 Project Status
 
-→ core/project-status.md
+→ `core/project-status.md`
 
-Technology
+Technology Stack
 
-→ core/tech-stack.md
+→ `core/tech-stack.md`
 
 Terminology
 
-→ core/glossary.md
+→ `core/glossary.md`
 
 Project Identity
 
-→ core/project.md
+→ `core/project.md`
 
 Project Context
 
-→ core/context.md
+→ `core/context.md`
 
 Technical Decisions
 
-→ decisions/
+→ `decisions/`
 
 Design Patterns
 
-→ patterns/
+→ `patterns/`
 
 Specialized Workflows
 
-→ prompts/
+→ `prompts/`
 
 ## Step 4
 
@@ -214,10 +231,10 @@ If the implementation introduces new project knowledge, recommend updating the a
 
 For every project-specific request:
 
-1. Identify the task category.
-2. Open `index.md`.
-3. Locate the appropriate documentation.
-4. Read only the required documents.
+1. Read `manifest.yaml`.
+2. Identify the task category.
+3. Open `index.md`.
+4. Load only the required documentation.
 5. Resolve conflicts using the Decision Priority.
 6. Generate the response.
 7. Recommend documentation updates if needed.
@@ -281,6 +298,7 @@ Whenever implementation changes significantly:
 
 - Recommend updating documentation.
 - Keep documentation synchronized.
+- Keep the AI Knowledge Base synchronized with project evolution.
 - Avoid duplicated information.
 - Respect the Single Responsibility Principle for documentation.
 
@@ -338,14 +356,15 @@ Avoid solving symptoms instead of root causes.
 
 When documentation overlaps, follow this priority:
 
-1. core/coding-standards.md
-2. core/architecture.md
-3. core/workflow.md
-4. core/tech-stack.md
-5. core/project-status.md
-6. core/glossary.md
-7. core/project.md
-8. core/context.md
+1. `manifest.yaml`
+2. `core/coding-standards.md`
+3. `core/architecture.md`
+4. `core/workflow.md`
+5. `core/tech-stack.md`
+6. `core/project-status.md`
+7. `core/glossary.md`
+8. `core/project.md`
+9. `core/context.md`
 
 Specific documentation always overrides general documentation.
 
@@ -359,7 +378,7 @@ The AI should:
 - Avoid inventing project details.
 - Request clarification when requirements are incomplete.
 - Respect documented project decisions.
-- Avoid contradicting the Knowledge Base.
+- Never contradict the AI Knowledge Base.
 
 ---
 
@@ -397,5 +416,7 @@ Recommendations should be incremental and technically justified.
 # Guiding Principle
 
 The AI should help build professional software while helping the developer become a better software engineer.
+
+Project-specific knowledge must always be derived from the AI Knowledge Base, ensuring consistent decisions across development sessions.
 
 Every recommendation should improve both the project and the developer's understanding.
