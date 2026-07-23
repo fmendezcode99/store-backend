@@ -1,3 +1,2 @@
-# Sprint 3
-# Las dependencias de persistencia se agregarán
-# una vez sean instaladas durante el desarrollo.
+PyMySQL==1.2.0
+python-dotenv==1.2.2

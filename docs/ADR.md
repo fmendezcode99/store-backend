@@ -378,12 +378,58 @@ Esto evita la necesidad de repetir contexto en cada nueva conversación, mejora 
 ### Componentes afectados
 
 - Carpeta raíz del proyecto (creación de `.ai/`)
-- Documentación de arquitectura (`docs/adr/`)
+- Documentación de arquitectura (`docs/ADR.md`)
 - Documentación del proyecto (`README.md`)
 
 ### Alcance
 
 Esta decisión aplica a toda la documentación de contexto, guías de estilo, reglas de prompt engineering y configuraciones específicas destinadas a ser consumidas por herramientas de IA durante el ciclo de vida del proyecto.
+
+**Estado:** `Aceptado`
+
+---
+
+## ADR-010 - Configuración centralizada mediante variables de entorno
+
+### Contexto
+
+A medida que el proyecto evoluciona hacia una arquitectura en capas, resulta necesario desacoplar la configuración de la aplicación de la lógica de negocio y del acceso a datos.
+
+La conexión a la base de datos requiere información sensible, como el host, puerto, nombre de la base de datos y credenciales de acceso. Definir estos valores directamente en el código dificultaría el mantenimiento, limitaría la portabilidad entre distintos entornos y aumentaría el riesgo de exponer información confidencial en el repositorio.
+
+### Decisión
+
+Se decidió centralizar la configuración de la aplicación mediante un módulo `settings.py`, encargado de cargar las variables de entorno definidas en un archivo `.env`.
+
+La configuración relacionada con la base de datos se representa mediante una clase `DatabaseConfig`, responsable de encapsular los parámetros necesarios para establecer la conexión con MySQL.
+
+De esta forma, el resto de la aplicación accederá a la configuración únicamente a través de este módulo, evitando dependencias directas con variables de entorno o valores codificados en los diferentes componentes del sistema.
+
+### Justificación
+
+Centralizar la configuración favorece la separación de responsabilidades entre la infraestructura y la lógica de la aplicación, permitiendo modificar parámetros de configuración sin afectar el código fuente.
+
+Esta decisión también facilita la administración de múltiples entornos de ejecución (desarrollo, pruebas y producción), mejora la mantenibilidad del proyecto y establece una base sólida para la incorporación de nuevas configuraciones en futuras etapas del desarrollo.
+
+### Beneficios
+
+- Centraliza toda la configuración de la aplicación en un único módulo.
+- Evita almacenar credenciales y parámetros sensibles dentro del código fuente.
+- Facilita la administración de diferentes entornos de ejecución.
+- Reduce el acoplamiento entre la configuración y la lógica de negocio.
+- Mejora la mantenibilidad y escalabilidad de la aplicación.
+- Facilita la incorporación futura de nuevas configuraciones (API Keys, JWT, servicios externos, entre otros).
+
+### Componentes afectados
+
+- Archivo `.env`
+- Módulo `app/config/settings.py`
+- Módulo `app/database/connection.py`
+- Documentación del proyecto (`README.md`)
+
+### Alcance
+
+Esta decisión aplica a toda la configuración de la aplicación que dependa del entorno de ejecución. Cualquier parámetro configurable deberá incorporarse mediante variables de entorno y centralizarse en el módulo de configuración, evitando la definición de valores directamente en el código fuente.
 
 **Estado:** `Aceptado`
 

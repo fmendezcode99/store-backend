@@ -51,35 +51,50 @@ El objetivo del proyecto es construir progresivamente un sistema de gestión par
 **Estado:** En Progreso
 
 > [!NOTE]
-> **Inicio de la capa de persistencia con MySQL:** Durante este sprint se inició la implementación de la capa de persistencia utilizando MySQL, incorporando el diseño del esquema inicial de la base de datos y las primeras operaciones SQL sobre la entidad `Producto`.
+> Durante este sprint se implementó la infraestructura de persistencia del proyecto utilizando MySQL Server 8 ejecutándose en un contenedor Podman con almacenamiento persistente mediante volúmenes.
 
-#### Avances realizados
+> Se diseñó el esquema relacional completo, se implementaron las restricciones de integridad, se desarrollaron scripts SQL versionados para la creación del esquema y la carga de datos iniciales, dejando el entorno preparado para comenzar el desarrollo de la capa Repository utilizando PyMySQL.
+
+#### Funcionalidades implementadas
 
 - Diseño del modelo de dominio completado.
 - Implementación de las entidades principales en Python.
-- Aplicación de principios de Programación Orientada a Objetos.
-- Documentación mediante ADR.
-- Arquitectura preparada para la capa de persistencia.
-- Configuración inicial de MySQL Server y creación de la base de datos `store_management_db`.
-- Organización de scripts SQL para la creación del esquema.
+- Aplicación de principios de Programación Orientada a Objetos (POO).
+- Documentación de decisiones de arquitectura mediante ADR.
+- Configuración de MySQL Server 8.4 utilizando Podman.
+- Configuración de almacenamiento persistente mediante volúmenes para el contenedor de MySQL.
+- Creación de la base de datos `store_management_db`.
+- Diseño e implementación del esquema relacional completo.
 - Organización de scripts SQL por responsabilidad (`schema`, `seed` y `queries`).
-- Implementación de la tabla `productos` con restricciones de integridad (`PRIMARY KEY`, `AUTO_INCREMENT`, `UNIQUE`, `NOT NULL` y `DEFAULT`).
-- Inserción de datos iniciales mediante scripts de carga (`seed`).
-- Implementación y práctica de las operaciones CRUD básicas (`INSERT`, `SELECT`, `UPDATE` y `DELETE`).
-- Validación de la estructura de la tabla utilizando `DESC productos`.
+- Implementación de todas las tablas del sistema con sus respectivas restricciones de integridad (`PRIMARY KEY`, `FOREIGN KEY`, `CHECK`, `UNIQUE`, `NOT NULL` y `DEFAULT`).
+- Inserción de datos iniciales mediante scripts de carga (`seed`) para todas las entidades del sistema.
+- Implementación y práctica de operaciones CRUD utilizando SQL.
+- Validación de la estructura de las tablas mediante comandos de inspección (`DESCRIBE`).
+- Validación de la integridad referencial y de las relaciones entre entidades mediante consultas `JOIN`.
+- Verificación del correcto funcionamiento del modelo de datos utilizando consultas de prueba.
+- Preparación del proyecto para iniciar la implementación de la capa de persistencia con PyMySQL.
+- Implementación de la configuración centralizada mediante variables de entorno (`.env`).
+- Implementación del módulo de conexión a MySQL utilizando PyMySQL.
+- Separación inicial de la configuración y la capa de acceso a datos.
 
 #### Objetivos y Próximos pasos
 
-- [x] Aprender SQL básico (DDL y DML).
-- [x] Implementar las tablas del sistema mediante scripts y organizar scripts de carga inicial.
-- [x] Comenzar la persistencia por la entidad `Producto` (entidad de menor complejidad).
-- [ ] Continuar con consultas SQL intermedias (`ORDER BY`, `LIMIT`, funciones de agregación y filtros avanzados).
-- [ ] Diseñar e implementar la entidad `Cliente`.
+- [x] Aprender SQL (DDL y DML).
+- [x] Diseñar el esquema relacional de la base de datos.
+- [x] Implementar todas las tablas del sistema mediante scripts SQL.
+- [x] Organizar los scripts SQL por responsabilidad (`schema`, `seed` y `queries`).
+- [x] Configurar MySQL Server 8.4 utilizando Podman.
+- [x] Poblar la base de datos con datos iniciales para todas las entidades.
+- [x] Validar la integridad referencial y las relaciones mediante consultas SQL.
+- [x] Implementar la configuración centralizada mediante variables de entorno.
+- [x] Preparar la estructura inicial de la capa de persistencia.
+- [ ] Integrar la conexión a MySQL con la capa Repository.
+- [ ] Desarrollar el Repository Pattern para la entidad `Producto`.
+- [ ] Implementar operaciones CRUD desde Python.
+- [ ] Diseñar la capa de servicios para separar la lógica de negocio del acceso a datos.
 - [ ] Integrar SQLAlchemy de forma progresiva.
-- [ ] Implementar la capa Repository para separar la lógica de acceso a datos.
-- [ ] Implementación de la capa de servicios y separación de la lógica de negocio del modelo.
-- [ ] Gestión de cambios de estado del pedido, validación y actualización de stock.
-- [ ] Procesamiento de pedidos, gestión de inventario y clientes.
+- [ ] Gestionar cambios de estado de los pedidos y actualización de inventario.
+- [ ] Implementar el procesamiento completo de pedidos y la gestión de clientes.
 
 ---
 
@@ -203,12 +218,9 @@ DetallePedido
 
 ## Base de datos
 
-La persistencia del proyecto se implementará utilizando las siguientes tecnologías:
+La capa de persistencia del proyecto utiliza **MySQL Server 8.4**, ejecutándose en un contenedor **Podman** con almacenamiento persistente mediante volúmenes.
 
-- **Motor:** MySQL Server 8
-- **Administración:** MySQL Workbench
-- **ORM:** SQLAlchemy (Integración progresiva en Sprint 3)
-- **Driver:** PyMySQL
+La base de datos fue diseñada siguiendo un enfoque relacional, implementando restricciones de integridad y scripts SQL versionados para facilitar su reconstrucción y mantenimiento.
 
 ### Decisiones de Diseño de Datos
 
@@ -233,6 +245,7 @@ Registros actuales:
 - `ADR-007` - Implementación de la capa de persistencia con MySQL
 - `ADR-008` - Organización de la capa de persistencia mediante scripts SQL
 - `ADR-009` - Adopción de una Base de Conocimiento para Desarrollo Asistido por IA
+- `ADR-010` - Configuración centralizada mediante variables de entorno
 
 La documentación detallada se encuentra en la ruta:
 
@@ -248,8 +261,10 @@ docs/ADR.md
 
 - **Lenguaje:** Python 3
 - **Paradigma:** Programación Orientada a Objetos
-- **Base de datos:** MySQL Server 8 & PyMySQL
+- **Base de datos:** MySQL Server 8
+- **Driver:** PyMySQL
 - **Contenedores:** Podman
+- **Cliente SQL:** MariaDB Client
 - **Control de versiones:** Git & GitHub
 
 ### Próximamente
