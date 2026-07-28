@@ -1,8 +1,20 @@
-# Store Management System
+# Store Backend
 
-Proyecto académico desarrollado para aplicar conceptos de Programación Orientada a Objetos (POO), modelado de dominio y buenas prácticas de desarrollo de software utilizando Python.
+Backend desarrollado en Python para gestionar inventario, clientes y pedidos, aplicando Programación Orientada a Objetos (POO), modelado de dominio y buenas prácticas de ingeniería de software.
 
 El objetivo del proyecto es construir progresivamente un sistema de gestión para una tienda, implementando una arquitectura limpia, reglas de negocio y un historial de desarrollo organizado mediante Git.
+
+---
+
+## Características
+
+- Arquitectura organizada por capas.
+- Modelado del dominio mediante Programación Orientada a Objetos.
+- Persistencia con MySQL Server 8.4.
+- Configuración centralizada mediante variables de entorno.
+- Documentación técnica mediante ADR.
+- Desarrollo incremental basado en sprints.
+- Historial de cambios documentado.
 
 ---
 
@@ -46,9 +58,9 @@ El objetivo del proyecto es construir progresivamente un sistema de gestión par
 
 ---
 
-### Sprint 3 - Servicios y Persistencia
+### Sprint 3 - Infraestructura de Persistencia
 
-**Estado:** En Progreso
+**Estado:** Completado
 
 > [!NOTE]
 > Durante este sprint se implementó la infraestructura de persistencia del proyecto utilizando MySQL Server 8 ejecutándose en un contenedor Podman con almacenamiento persistente mediante volúmenes.
@@ -68,33 +80,13 @@ El objetivo del proyecto es construir progresivamente un sistema de gestión par
 - Organización de scripts SQL por responsabilidad (`schema`, `seed` y `queries`).
 - Implementación de todas las tablas del sistema con sus respectivas restricciones de integridad (`PRIMARY KEY`, `FOREIGN KEY`, `CHECK`, `UNIQUE`, `NOT NULL` y `DEFAULT`).
 - Inserción de datos iniciales mediante scripts de carga (`seed`) para todas las entidades del sistema.
-- Implementación y práctica de operaciones CRUD utilizando SQL.
+- Implementación de consultas SQL para validar el funcionamiento del modelo de datos.
 - Validación de la estructura de las tablas mediante comandos de inspección (`DESCRIBE`).
 - Validación de la integridad referencial y de las relaciones entre entidades mediante consultas `JOIN`.
 - Verificación del correcto funcionamiento del modelo de datos utilizando consultas de prueba.
-- Preparación del proyecto para iniciar la implementación de la capa de persistencia con PyMySQL.
 - Implementación de la configuración centralizada mediante variables de entorno (`.env`).
 - Implementación del módulo de conexión a MySQL utilizando PyMySQL.
 - Separación inicial de la configuración y la capa de acceso a datos.
-
-#### Objetivos y Próximos pasos
-
-- [x] Aprender SQL (DDL y DML).
-- [x] Diseñar el esquema relacional de la base de datos.
-- [x] Implementar todas las tablas del sistema mediante scripts SQL.
-- [x] Organizar los scripts SQL por responsabilidad (`schema`, `seed` y `queries`).
-- [x] Configurar MySQL Server 8.4 utilizando Podman.
-- [x] Poblar la base de datos con datos iniciales para todas las entidades.
-- [x] Validar la integridad referencial y las relaciones mediante consultas SQL.
-- [x] Implementar la configuración centralizada mediante variables de entorno.
-- [x] Preparar la estructura inicial de la capa de persistencia.
-- [ ] Integrar la conexión a MySQL con la capa Repository.
-- [ ] Desarrollar el Repository Pattern para la entidad `Producto`.
-- [ ] Implementar operaciones CRUD desde Python.
-- [ ] Diseñar la capa de servicios para separar la lógica de negocio del acceso a datos.
-- [ ] Integrar SQLAlchemy de forma progresiva.
-- [ ] Gestionar cambios de estado de los pedidos y actualización de inventario.
-- [ ] Implementar el procesamiento completo de pedidos y la gestión de clientes.
 
 ---
 
@@ -128,57 +120,63 @@ El objetivo del proyecto es construir progresivamente un sistema de gestión par
 
 ## Arquitectura
 
-Estructura de directorios planificada para la aplicación:
+La estructura actual del proyecto está organizada siguiendo una arquitectura por capas, facilitando la separación de responsabilidades y la escalabilidad del sistema.
 
 ```text
 Store-Backend/
 │
-├── .ai/                          # Base de Conocimiento para desarrollo asistido por IA
-│   ├── core/                     # Contexto y documentación principal del proyecto
-│   ├── decisions/                # Decisiones para la IA
-│   ├── patterns/                 # Patrones y buenas prácticas reutilizables
-│   ├── prompts/                  # Prompts especializados
-│   └── templates/                # Plantillas para mantener la consistencia documental
+├── .ai/                          # Base de conocimiento para desarrollo asistido por IA
+│   ├── core/
+│   ├── decisions/
+│   ├── patterns/
+│   ├── prompts/
+│   └── templates/
 │
-├── app/                          # Código fuente del backend
-│   ├── database/
-│   ├── enums/
-│   ├── models/
-│   ├── repositories/
-│   ├── routes/
-│   ├── services/
-│   └── utils/
+├── app/                          # Código fuente de la aplicación
+│   ├── config/                   # Configuración del proyecto
+│   ├── database/                 # Conexión y acceso a la base de datos
+│   ├── enums/                    # Enumeraciones del dominio
+│   ├── models/                   # Modelos del dominio
+│   ├── repositories/             # Capa de acceso a datos (Sprint 4)
+│   ├── routes/                   # Endpoints de la API (Sprint 5)
+│   ├── services/                 # Lógica de negocio (Sprint 4)
+│   └── utils/                    # Utilidades compartidas
 │
-├── docs/                         # Documentación para desarrolladores y reclutadores
-│   ├── adr/                      # Architecture Decision Records (ADR)
+├── docs/                         # Documentación del proyecto
+│   ├── ADR.md                    # Architecture Decision Records
+│   ├── API.md                    # Especificación de la API REST
+│   ├── CHANGELOG.md              # Historial de cambios
+│   ├── ROADMAP.md                # Planificación del proyecto
 │   └── development_environment.md
 │
-├── sql/                          # Scripts SQL del proyecto
-│   ├── schema/                   # Creación de base de datos y tablas
+├── sql/                          # Scripts SQL
+│   ├── schema/                   # Creación de tablas y restricciones
 │   ├── seed/                     # Datos iniciales
-│   └── queries/                  # Consultas de ejemplo
+│   └── queries/                  # Consultas de prueba
 │
 ├── tests/                        # Pruebas del proyecto
 │
-├── .gitignore                    # Archivos ignorados por Git
-├── LICENSE                       # Licencia MIT del proyecto
-├── README.md                     # Documentación principal del proyecto
-└── requirements.txt              # Dependencias de Python
-
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
 ```
 
 ---
 
 ## Modelo del dominio
 
-Actualmente el sistema cuenta con las siguientes entidades y componentes del negocio:
+El dominio del sistema está compuesto por las siguientes entidades principales y sus relaciones:
 
 ```text
 Persona
-└── Cliente
+├── Cliente
 └── Empleado
 
 Producto
+
+Pedido
+└── DetallePedido
 ```
 
 ### Comportamiento de Pedidos
@@ -259,9 +257,9 @@ docs/ADR.md
 
 ### Stack actual
 
-- **Lenguaje:** Python 3
+- **Lenguaje:** Python 3.14
 - **Paradigma:** Programación Orientada a Objetos
-- **Base de datos:** MySQL Server 8
+- **Base de datos:** MySQL Server 8.4
 - **Driver:** PyMySQL
 - **Contenedores:** Podman
 - **Cliente SQL:** MariaDB Client
@@ -315,13 +313,13 @@ El proyecto mantiene un historial de commits pequeños y descriptivos siguiendo 
 
 ## Estado general
 
-| Sprint       | Estado      |
-| :----------- | :---------- |
-| **Sprint 1** | Completado  |
-| **Sprint 2** | Completado  |
-| **Sprint 3** | En Progreso |
-| **Sprint 4** | Pendiente   |
-| **Sprint 5** | Pendiente   |
+| Sprint       | Estado     |
+| :----------- | :--------- |
+| **Sprint 1** | Completado |
+| **Sprint 2** | Completado |
+| **Sprint 3** | Completado |
+| **Sprint 4** | Pendiente  |
+| **Sprint 5** | Pendiente  |
 
 ---
 
