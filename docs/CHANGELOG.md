@@ -6,6 +6,26 @@ El formato está basado en Keep a Changelog y el proyecto utiliza Versionado Sem
 
 ---
 
+## [0.4.0]
+
+### Added
+
+- Implementación del patrón Repository para la capa de persistencia.
+- Creación de la clase `BaseRepository` para centralizar la gestión de conexiones, cursores y transacciones.
+- Implementación de `ProductoRepository`.
+- Operaciones CRUD completas (`INSERT`, `SELECT`, `UPDATE` y `DELETE`) para la entidad `Producto`.
+- Consultas parametrizadas mediante PyMySQL para prevenir inyección SQL.
+- Conversión de registros de la base de datos a objetos del dominio.
+- Pruebas de integración para validar las operaciones CRUD sobre la entidad `Producto`.
+
+### Changed
+
+- Actualización del modelo `Producto` para soportar persistencia mediante identificadores generados por la base de datos.
+- Actualización del README con el avance de la capa Repository.
+- Incorporación del ADR-011 correspondiente a la adopción del patrón Repository.
+
+---
+
 ## [0.3.0]
 
 ### Added

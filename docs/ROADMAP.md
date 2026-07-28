@@ -13,9 +13,9 @@ El proyecto está dividido en cinco sprints incrementales. Cada sprint incorpora
 | Campo          | Valor         |
 | -------------- | ------------- |
 | Proyecto       | Store Backend |
-| Versión actual | 0.3.0         |
-| Sprint actual  | Sprint 3      |
-| Estado         | Completado    |
+| Versión actual | 0.4.0         |
+| Sprint actual  | Sprint 4      |
+| Estado         | En progreso   |
 
 ---
 
@@ -83,31 +83,48 @@ Completado.
 
 ---
 
-## Sprint 4 — Repository Pattern y Lógica de Negocio
+## Sprint 4 — Repository Pattern
 
 ## Objetivos
 
 - Implementar el patrón Repository.
-- Desarrollar los CRUD de las entidades principales.
-- Implementar la capa de servicios.
-- Aplicar validaciones y reglas de negocio.
-- Incorporar pruebas unitarias.
+- Desarrollar la capa de acceso a datos.
+- Implementar los CRUD de las entidades principales.
+- Integrar la persistencia con MySQL mediante PyMySQL.
+- Validar las operaciones CRUD mediante pruebas de integración.
+
+## Funcionalidades implementadas
+
+- Implementación del patrón Repository.
+- Creación de la clase `BaseRepository`.
+- Implementación de `ProductoRepository`.
+- Desarrollo de operaciones CRUD para la entidad `Producto`.
+- Integración con MySQL utilizando PyMySQL.
+- Validación de las operaciones CRUD mediante pruebas de integración.
+
+## Pendiente
+
+- Implementación de `ClienteRepository`.
+- Implementación de `EmpleadoRepository`.
+- Implementación de `PedidoRepository`.
+- Implementación de los repositorios restantes del dominio.
 
 ## Estado
 
-Pendiente.
+En progreso.
 
 ---
 
-## Sprint 5 — API REST y Finalización
+## Sprint 5 — Servicios y API REST
 
 ## Objetivos
 
+- Implementar la capa de servicios.
+- Incorporar la lógica de negocio de la aplicación.
 - Implementar FastAPI.
 - Crear los endpoints REST.
-- Integrar la capa de servicios.
-- Documentar la API con Swagger/OpenAPI.
-- Realizar pruebas finales.
+- Documentar la API mediante OpenAPI/Swagger.
+- Realizar pruebas de integración.
 - Preparar el proyecto para su despliegue.
 
 ## Estado

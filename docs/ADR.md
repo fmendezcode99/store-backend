@@ -434,3 +434,50 @@ Esta decisión aplica a toda la configuración de la aplicación que dependa del
 **Estado:** `Aceptado`
 
 ---
+
+## ADR-011 - Implementación del patrón Repository
+
+### Contexto
+
+Con la infraestructura de persistencia implementada durante el sprint anterior, la aplicación requiere un mecanismo que permita acceder a la base de datos sin acoplar la lógica de negocio a la tecnología de persistencia utilizada.
+
+Realizar consultas SQL directamente desde las clases del dominio o desde futuras capas de servicios incrementaría el acoplamiento entre los componentes del sistema, dificultaría el mantenimiento del código y limitaría la posibilidad de modificar la estrategia de acceso a datos sin afectar el resto de la aplicación.
+
+### Decisión
+
+Se decidió adoptar el patrón Repository como mecanismo para encapsular toda la lógica de acceso a la base de datos.
+
+Cada entidad del dominio dispondrá de un repositorio especializado responsable de ejecutar las operaciones de persistencia correspondientes, mientras que el resto de la aplicación interactuará únicamente con estos repositorios, sin depender directamente de PyMySQL ni de consultas SQL.
+
+Esta organización establece una separación clara entre la lógica de negocio y la infraestructura de persistencia, manteniendo responsabilidades bien definidas entre las diferentes capas del sistema.
+
+### Justificación
+
+El patrón Repository permite aislar la lógica de acceso a datos del resto de la aplicación, favoreciendo una arquitectura más modular y fácil de mantener.
+
+Además de mejorar la organización del código, esta decisión facilita la incorporación de nuevas tecnologías de persistencia en el futuro, reduce el impacto de cambios sobre la base de datos y mejora la capacidad de realizar pruebas sobre la lógica de negocio sin depender directamente de la infraestructura.
+
+### Beneficios
+
+- Desacopla la lógica de negocio del acceso a datos.
+- Centraliza las operaciones de persistencia de cada entidad.
+- Reduce el acoplamiento con PyMySQL y con las consultas SQL.
+- Favorece una arquitectura organizada por capas.
+- Facilita el mantenimiento y la evolución del sistema.
+- Permite sustituir la tecnología de persistencia con un impacto mínimo sobre el resto de la aplicación.
+
+### Componentes afectados
+
+- Carpeta `app/repositories/`
+- Clase `BaseRepository`
+- Repositorios especializados del dominio
+- Módulo `app/database/connection.py`
+- Documentación del proyecto (`README.md`)
+
+### Alcance
+
+Esta decisión aplica a toda la capa de persistencia del proyecto. Cualquier acceso a la base de datos deberá realizarse exclusivamente mediante repositorios especializados, evitando que otras capas de la aplicación ejecuten consultas SQL o interactúen directamente con el mecanismo de conexión.
+
+**Estado:** `Aceptado`
+
+---

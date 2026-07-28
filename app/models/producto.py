@@ -10,8 +10,10 @@ class Producto:
                 costo: Decimal,
                 precio_venta: Decimal,
                 stock: int,
-                estado_activo: bool
+                estado_activo: bool,
+                id_producto: int | None = None
                 ) -> None:
+        self.id_producto = id_producto
         self.nombre = nombre
         self.sku = sku
         self.marca = marca
@@ -20,6 +22,7 @@ class Producto:
         self.precio_venta = precio_venta
         self.stock = stock
         self.estado_activo = estado_activo
+
     @property
     def precio(self) -> Decimal:
         """Retorna el precio de venta registrado para ese producto."""
@@ -28,6 +31,7 @@ class Producto:
     def __repr__(self) -> str:
         return (
             f"Producto("
+            f"id_producto={self.id_producto}, "
             f"nombre='{self.nombre}', "
             f"sku='{self.sku}', "
             f"precio={self.precio_venta}, "

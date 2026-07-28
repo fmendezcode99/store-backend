@@ -1,9 +1,10 @@
+from pymysql.connections import Connection
 import pymysql
 
 from app.config.settings import db_config
 
 
-def get_connection():
+def get_connection() -> Connection:
     """Crea y devuelve una conexión a MySQL."""
     return pymysql.connect(
         host=db_config.host,

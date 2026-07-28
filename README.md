@@ -92,15 +92,29 @@ El objetivo del proyecto es construir progresivamente un sistema de gestión par
 
 ### Sprint 4 - Persistencia
 
-**Estado:** Pendiente
+**Estado:** En progreso
 
-#### Objetivos
+> [!NOTE]
+> Durante este sprint se inició la implementación de la capa Repository del proyecto utilizando el patrón Repository para desacoplar la lógica de acceso a datos de la lógica de negocio.
 
-- [ ] Integración con base de datos.
-- [ ] Repositorios.
-- [ ] CRUD.
-- [ ] Consultas.
-- [ ] Persistencia de entidades.
+> Como primera etapa se desarrolló el repositorio de la entidad `Producto`, implementando operaciones CRUD completas y validando su funcionamiento mediante pruebas de integración contra una base de datos MySQL.
+
+#### Avances implementados
+
+- Implementación del patrón Repository.
+- Creación de la clase `BaseRepository`.
+- Implementación de `ProductoRepository`.
+- Desarrollo de operaciones CRUD para la entidad `Producto`.
+- Integración con MySQL mediante PyMySQL.
+- Validación de las operaciones CRUD mediante pruebas de integración.
+
+#### Pendiente
+
+- Implementación de `ClienteRepository`.
+- Implementación de `EmpleadoRepository`.
+- Implementación de `PedidoRepository`.
+- Implementación de los repositorios restantes del dominio.
+- Consultas específicas del sistema.
 
 ---
 
@@ -135,11 +149,14 @@ Store-Backend/
 ├── app/                          # Código fuente de la aplicación
 │   ├── config/                   # Configuración del proyecto
 │   ├── database/                 # Conexión y acceso a la base de datos
+│   │   └── connection.py
 │   ├── enums/                    # Enumeraciones del dominio
 │   ├── models/                   # Modelos del dominio
-│   ├── repositories/             # Capa de acceso a datos (Sprint 4)
+│   ├── repositories/             # Capa Repository (Sprint 4)
+│   │   ├── base_repository.py
+│   │   └── producto_repository.py
 │   ├── routes/                   # Endpoints de la API (Sprint 5)
-│   ├── services/                 # Lógica de negocio (Sprint 4)
+│   ├── services/                 # Lógica de negocio (Próximamente)
 │   └── utils/                    # Utilidades compartidas
 │
 ├── docs/                         # Documentación del proyecto
@@ -155,6 +172,7 @@ Store-Backend/
 │   └── queries/                  # Consultas de prueba
 │
 ├── tests/                        # Pruebas del proyecto
+│   └── test_producto_repository.py
 │
 ├── .gitignore
 ├── LICENSE
@@ -244,6 +262,7 @@ Registros actuales:
 - `ADR-008` - Organización de la capa de persistencia mediante scripts SQL
 - `ADR-009` - Adopción de una Base de Conocimiento para Desarrollo Asistido por IA
 - `ADR-010` - Configuración centralizada mediante variables de entorno
+- `ADR-011` - Implementación del patrón Repository
 
 La documentación detallada se encuentra en la ruta:
 
@@ -313,13 +332,13 @@ El proyecto mantiene un historial de commits pequeños y descriptivos siguiendo 
 
 ## Estado general
 
-| Sprint       | Estado     |
-| :----------- | :--------- |
-| **Sprint 1** | Completado |
-| **Sprint 2** | Completado |
-| **Sprint 3** | Completado |
-| **Sprint 4** | Pendiente  |
-| **Sprint 5** | Pendiente  |
+| Sprint       | Estado      |
+| :----------- | :---------- |
+| **Sprint 1** | Completado  |
+| **Sprint 2** | Completado  |
+| **Sprint 3** | Completado  |
+| **Sprint 4** | En progreso |
+| **Sprint 5** | Pendiente   |
 
 ---
 
