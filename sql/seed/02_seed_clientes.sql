@@ -1,0 +1,1042 @@
+-- ==========================================================
+-- Store Management System
+-- Archivo      : 04_seed_clientes.sql
+-- Descripción  : Inserta clientes de prueba para el sistema.
+-- Base de datos: store_management_db
+-- ==========================================================
+
+USE store_management_db;
+
+START TRANSACTION;
+
+INSERT INTO
+    clientes (
+        nombre,
+        apellido,
+        identificacion,
+        email,
+        fecha_nacimiento,
+        fecha_registro,
+        puntos,
+        estado_activo
+    )
+VALUES
+    -- ==========================================================
+    -- CLIENTES (1 - 20)
+    -- ==========================================================
+    (
+        'Juan',
+        'Rodríguez',
+        '100000001',
+        'juan.rodriguez@gmail.com',
+        '1992-04-15',
+        '2024-02-12',
+        120,
+        TRUE
+    ),
+    (
+        'María',
+        'Gómez',
+        '100000002',
+        'maria.gomez@hotmail.com',
+        '1995-08-23',
+        '2024-03-08',
+        340,
+        TRUE
+    ),
+    (
+        'Carlos',
+        'Martínez',
+        '100000003',
+        'carlos.martinez@outlook.com',
+        '1988-01-10',
+        '2024-01-20',
+        980,
+        TRUE
+    ),
+    (
+        'Laura',
+        'Hernández',
+        '100000004',
+        'laura.hernandez@gmail.com',
+        '1997-06-18',
+        '2024-04-05',
+        75,
+        TRUE
+    ),
+    (
+        'Andrés',
+        'López',
+        '100000005',
+        'andres.lopez@yahoo.com',
+        '1991-11-27',
+        '2024-05-16',
+        1540,
+        TRUE
+    ),
+    (
+        'Sofía',
+        'Ramírez',
+        '100000006',
+        'sofia.ramirez@gmail.com',
+        '1999-02-14',
+        '2024-06-02',
+        210,
+        TRUE
+    ),
+    (
+        'Daniel',
+        'Torres',
+        '100000007',
+        'daniel.torres@hotmail.com',
+        '1989-09-09',
+        '2024-06-21',
+        0,
+        TRUE
+    ),
+    (
+        'Valentina',
+        'Moreno',
+        '100000008',
+        'valentina.moreno@gmail.com',
+        '1998-12-01',
+        '2024-07-11',
+        480,
+        TRUE
+    ),
+    (
+        'Miguel',
+        'Castro',
+        '100000009',
+        'miguel.castro@outlook.com',
+        '1994-05-03',
+        '2024-08-15',
+        830,
+        TRUE
+    ),
+    (
+        'Camila',
+        'Rojas',
+        '100000010',
+        'camila.rojas@gmail.com',
+        '2000-10-29',
+        '2024-09-01',
+        60,
+        TRUE
+    ),
+    (
+        'Sebastián',
+        'Vargas',
+        '100000011',
+        'sebastian.vargas@gmail.com',
+        '1993-03-22',
+        '2024-10-04',
+        1320,
+        TRUE
+    ),
+    (
+        'Natalia',
+        'García',
+        '100000012',
+        'natalia.garcia@hotmail.com',
+        '1996-07-13',
+        '2024-11-18',
+        290,
+        TRUE
+    ),
+    (
+        'Felipe',
+        'Jiménez',
+        '100000013',
+        'felipe.jimenez@gmail.com',
+        '1987-02-08',
+        '2025-01-10',
+        0,
+        TRUE
+    ),
+    (
+        'Paula',
+        'Ortiz',
+        '100000014',
+        'paula.ortiz@outlook.com',
+        '1998-09-30',
+        '2025-02-14',
+        670,
+        TRUE
+    ),
+    (
+        'David',
+        'Suárez',
+        '100000015',
+        'david.suarez@gmail.com',
+        '1990-12-17',
+        '2025-03-22',
+        150,
+        TRUE
+    ),
+    (
+        'Carolina',
+        'Mendoza',
+        '100000016',
+        'carolina.mendoza@yahoo.com',
+        '1995-04-28',
+        '2025-04-11',
+        1890,
+        TRUE
+    ),
+    (
+        'Mateo',
+        'Navarro',
+        '100000017',
+        'mateo.navarro@gmail.com',
+        '2001-08-05',
+        '2025-05-07',
+        30,
+        TRUE
+    ),
+    (
+        'Sara',
+        'Cruz',
+        '100000018',
+        'sara.cruz@hotmail.com',
+        '1997-01-25',
+        '2025-06-18',
+        920,
+        TRUE
+    ),
+    (
+        'Julián',
+        'Herrera',
+        '100000019',
+        'julian.herrera@gmail.com',
+        '1992-06-11',
+        '2025-07-03',
+        410,
+        TRUE
+    ),
+    (
+        'Isabella',
+        'Peña',
+        '100000020',
+        'isabella.pena@outlook.com',
+        '1999-11-06',
+        '2025-08-09',
+        0,
+        TRUE
+    ),
+
+-- ==========================================================
+-- CLIENTES (21 - 40)
+-- ==========================================================
+
+(
+    'Alejandro',
+    'Ruiz',
+    '100000021',
+    'alejandro.ruiz@gmail.com',
+    '1991-02-19',
+    '2025-08-20',
+    580,
+    TRUE
+),
+(
+    'Daniela',
+    'Silva',
+    '100000022',
+    'daniela.silva@hotmail.com',
+    '1998-10-07',
+    '2025-09-03',
+    210,
+    TRUE
+),
+(
+    'Cristian',
+    'Morales',
+    '100000023',
+    'cristian.morales@outlook.com',
+    '1993-06-14',
+    '2025-09-15',
+    1250,
+    TRUE
+),
+(
+    'Tatiana',
+    'Guerrero',
+    '100000024',
+    'tatiana.guerrero@gmail.com',
+    '1996-03-28',
+    '2025-10-01',
+    0,
+    TRUE
+),
+(
+    'Kevin',
+    'Castaño',
+    '100000025',
+    'kevin.castano@yahoo.com',
+    '1999-12-11',
+    '2025-10-18',
+    340,
+    TRUE
+),
+(
+    'Diana',
+    'Pérez',
+    '100000026',
+    'diana.perez@gmail.com',
+    '1990-09-24',
+    '2025-11-02',
+    760,
+    TRUE
+),
+(
+    'Nicolás',
+    'Reyes',
+    '100000027',
+    'nicolas.reyes@hotmail.com',
+    '1994-01-30',
+    '2025-11-19',
+    95,
+    TRUE
+),
+(
+    'Angélica',
+    'Salazar',
+    '100000028',
+    'angelica.salazar@outlook.com',
+    '1988-08-17',
+    '2025-12-05',
+    1820,
+    TRUE
+),
+(
+    'Jhon',
+    'Muñoz',
+    '100000029',
+    'jhon.munoz@gmail.com',
+    '1995-05-09',
+    '2025-12-16',
+    450,
+    TRUE
+),
+(
+    'Liliana',
+    'Vega',
+    '100000030',
+    'liliana.vega@hotmail.com',
+    '1992-11-01',
+    '2026-01-08',
+    0,
+    TRUE
+),
+(
+    'Esteban',
+    'Aguilar',
+    '100000031',
+    'esteban.aguilar@gmail.com',
+    '1989-04-04',
+    '2026-01-20',
+    980,
+    TRUE
+),
+(
+    'Karen',
+    'Arias',
+    '100000032',
+    'karen.arias@outlook.com',
+    '1997-07-26',
+    '2026-02-03',
+    630,
+    TRUE
+),
+(
+    'Mauricio',
+    'Acosta',
+    '100000033',
+    'mauricio.acosta@gmail.com',
+    '1987-10-13',
+    '2026-02-14',
+    2400,
+    TRUE
+),
+(
+    'Sandra',
+    'Beltrán',
+    '100000034',
+    'sandra.beltran@yahoo.com',
+    '1993-12-02',
+    '2026-02-28',
+    120,
+    TRUE
+),
+(
+    'Diego',
+    'Parra',
+    '100000035',
+    'diego.parra@hotmail.com',
+    '1996-06-05',
+    '2026-03-10',
+    870,
+    TRUE
+),
+(
+    'Adriana',
+    'Campos',
+    '100000036',
+    'adriana.campos@gmail.com',
+    '1991-08-18',
+    '2026-03-24',
+    65,
+    TRUE
+),
+(
+    'Óscar',
+    'León',
+    '100000037',
+    'oscar.leon@outlook.com',
+    '1986-05-22',
+    '2026-04-07',
+    1390,
+    TRUE
+),
+(
+    'Viviana',
+    'Mora',
+    '100000038',
+    'viviana.mora@gmail.com',
+    '1998-01-16',
+    '2026-04-19',
+    510,
+    TRUE
+),
+(
+    'Juan Pablo',
+    'Quintero',
+    '100000039',
+    'juanpablo.quintero@hotmail.com',
+    '1994-09-08',
+    '2026-05-02',
+    0,
+    TRUE
+),
+(
+    'Melissa',
+    'Valencia',
+    '100000040',
+    'melissa.valencia@gmail.com',
+    '2000-02-27',
+    '2026-05-15',
+    320,
+    TRUE
+),
+-- ==========================================================
+-- CLIENTES (41 - 60)
+-- ==========================================================
+(
+    'Javier',
+    'Espinosa',
+    '100000041',
+    'javier.espinosa@gmail.com',
+    '1991-03-12',
+    '2025-01-16',
+    140,
+    TRUE
+),
+(
+    'Catalina',
+    'Franco',
+    '100000042',
+    'catalina.franco@hotmail.com',
+    '1998-06-24',
+    '2025-02-05',
+    0,
+    TRUE
+),
+(
+    'Fernando',
+    'Cardona',
+    '100000043',
+    'fernando.cardona@outlook.com',
+    '1987-08-09',
+    '2025-02-28',
+    1150,
+    TRUE
+),
+(
+    'Luisa',
+    'Pineda',
+    '100000044',
+    'luisa.pineda@gmail.com',
+    '1995-01-17',
+    '2025-03-18',
+    430,
+    TRUE
+),
+(
+    'Ricardo',
+    'Valderrama',
+    '100000045',
+    'ricardo.valderrama@yahoo.com',
+    '1989-11-22',
+    '2025-04-04',
+    2100,
+    TRUE
+),
+(
+    'Mónica',
+    'Gallego',
+    '100000046',
+    'monica.gallego@gmail.com',
+    '1993-04-28',
+    '2025-04-19',
+    260,
+    TRUE
+),
+(
+    'Héctor',
+    'Sánchez',
+    '100000047',
+    'hector.sanchez@hotmail.com',
+    '1986-10-05',
+    '2025-05-11',
+    720,
+    TRUE
+),
+(
+    'Claudia',
+    'Mejía',
+    '100000048',
+    'claudia.mejia@outlook.com',
+    '1994-09-13',
+    '2025-06-02',
+    80,
+    FALSE
+),
+(
+    'Edwin',
+    'Montoya',
+    '100000049',
+    'edwin.montoya@gmail.com',
+    '1992-12-19',
+    '2025-06-21',
+    910,
+    TRUE
+),
+(
+    'Lorena',
+    'Buitrago',
+    '100000050',
+    'lorena.buitrago@hotmail.com',
+    '1999-02-26',
+    '2025-07-08',
+    0,
+    TRUE
+),
+(
+    'William',
+    'Cárdenas',
+    '100000051',
+    'william.cardenas@gmail.com',
+    '1988-07-01',
+    '2025-07-30',
+    1650,
+    TRUE
+),
+(
+    'Marcela',
+    'Rincón',
+    '100000052',
+    'marcela.rincon@outlook.com',
+    '1996-05-18',
+    '2025-08-15',
+    370,
+    TRUE
+),
+(
+    'Jonathan',
+    'Fuentes',
+    '100000053',
+    'jonathan.fuentes@gmail.com',
+    '1991-09-03',
+    '2025-09-01',
+    0,
+    TRUE
+),
+(
+    'Yulieth',
+    'Arango',
+    '100000054',
+    'yulieth.arango@yahoo.com',
+    '1997-03-07',
+    '2025-09-22',
+    1240,
+    TRUE
+),
+(
+    'Brayan',
+    'Sarmiento',
+    '100000055',
+    'brayan.sarmiento@hotmail.com',
+    '2000-08-14',
+    '2025-10-13',
+    60,
+    TRUE
+),
+(
+    'Patricia',
+    'Restrepo',
+    '100000056',
+    'patricia.restrepo@gmail.com',
+    '1985-06-11',
+    '2025-11-05',
+    780,
+    TRUE
+),
+(
+    'Kevin',
+    'Osorio',
+    '100000057',
+    'kevin.osorio@outlook.com',
+    '1998-12-30',
+    '2025-11-19',
+    0,
+    FALSE
+),
+(
+    'Tatiana',
+    'Benítez',
+    '100000058',
+    'tatiana.benitez@gmail.com',
+    '1993-10-27',
+    '2025-12-10',
+    520,
+    TRUE
+),
+(
+    'Cristian',
+    'Cifuentes',
+    '100000059',
+    'cristian.cifuentes@hotmail.com',
+    '1990-01-06',
+    '2026-01-15',
+    310,
+    TRUE
+),
+(
+    'Paola',
+    'Londoño',
+    '100000060',
+    'paola.londono@gmail.com',
+    '1996-11-20',
+    '2026-02-02',
+    1780,
+    TRUE
+),
+-- ==========================================================
+-- CLIENTES (61 - 80)
+-- ==========================================================
+(
+    'Juan José',
+    'Gómez López',
+    '100000061',
+    'juanjose.gomez@gmail.com',
+    '1992-05-14',
+    '2025-02-08',
+    890,
+    TRUE
+),
+(
+    'María Fernanda',
+    'Rodríguez Pérez',
+    '100000062',
+    'mfernanda.rodriguez@hotmail.com',
+    '1997-08-19',
+    '2025-02-21',
+    0,
+    TRUE
+),
+(
+    'Luis Eduardo',
+    'Morales Castro',
+    '100000063',
+    'luise.morales@outlook.com',
+    '1988-10-03',
+    '2025-03-11',
+    1340,
+    TRUE
+),
+(
+    'Ana Sofía',
+    'Jiménez Torres',
+    '100000064',
+    'anasofia.jimenez@gmail.com',
+    '1999-01-25',
+    '2025-03-28',
+    250,
+    TRUE
+),
+(
+    'Jorge Andrés',
+    'Hernández Rojas',
+    '100000065',
+    'jorge.hernandez@yahoo.com',
+    '1990-06-17',
+    '2025-04-09',
+    640,
+    TRUE
+),
+(
+    'Diana Marcela',
+    'Vargas Ruiz',
+    '100000066',
+    'dmarcela.vargas@gmail.com',
+    '1994-12-07',
+    '2025-04-24',
+    1720,
+    TRUE
+),
+(
+    'Sergio Andrés',
+    'Castañeda León',
+    '100000067',
+    'sergio.castaneda@hotmail.com',
+    '1987-04-18',
+    '2025-05-15',
+    95,
+    TRUE
+),
+(
+    'Laura Catalina',
+    'Salinas Gómez',
+    '100000068',
+    'laurac.salinas@outlook.com',
+    '1998-07-22',
+    '2025-05-30',
+    480,
+    FALSE
+),
+(
+    'Diego Alejandro',
+    'Molina Herrera',
+    '100000069',
+    'diego.molina@gmail.com',
+    '1993-03-06',
+    '2025-06-14',
+    1180,
+    TRUE
+),
+(
+    'Valentina',
+    'Ramírez Castro',
+    '100000070',
+    'valentina.ramirez@hotmail.com',
+    '2001-11-09',
+    '2025-07-02',
+    0,
+    TRUE
+),
+(
+    'Camilo Andrés',
+    'Ruiz Mendoza',
+    '100000071',
+    'camilo.ruiz@gmail.com',
+    '1991-02-13',
+    '2025-07-19',
+    560,
+    TRUE
+),
+(
+    'Natalia',
+    'Patiño López',
+    '100000072',
+    'natalia.patino@outlook.com',
+    '1996-09-28',
+    '2025-08-05',
+    980,
+    TRUE
+),
+(
+    'Felipe Andrés',
+    'Gil Restrepo',
+    '100000073',
+    'felipe.gil@gmail.com',
+    '1989-05-20',
+    '2025-08-23',
+    60,
+    TRUE
+),
+(
+    'Karen Juliana',
+    'Arenas Muñoz',
+    '100000074',
+    'kjarenas@hotmail.com',
+    '1995-10-12',
+    '2025-09-10',
+    320,
+    TRUE
+),
+(
+    'Miguel Ángel',
+    'Velásquez Díaz',
+    '100000075',
+    'miguel.velasquez@gmail.com',
+    '1986-01-08',
+    '2025-09-26',
+    2140,
+    TRUE
+),
+(
+    'Paula Andrea',
+    'Córdoba Martínez',
+    '100000076',
+    'paula.cordoba@yahoo.com',
+    '1998-04-30',
+    '2025-10-15',
+    0,
+    FALSE
+),
+(
+    'Juan David',
+    'Forero Gómez',
+    '100000077',
+    'juandavid.forero@gmail.com',
+    '1994-06-26',
+    '2025-11-03',
+    780,
+    TRUE
+),
+(
+    'Alejandra',
+    'Nieto Sánchez',
+    '100000078',
+    'alejandra.nieto@hotmail.com',
+    '1999-12-18',
+    '2025-11-22',
+    140,
+    TRUE
+),
+(
+    'Cristian David',
+    'Peñuela Ríos',
+    '100000079',
+    'cristian.penuela@outlook.com',
+    '1992-08-15',
+    '2025-12-09',
+    1520,
+    TRUE
+),
+(
+    'Andrea Carolina',
+    'Villamizar Cruz',
+    '100000080',
+    'andrea.villamizar@gmail.com',
+    '1997-07-01',
+    '2026-01-18',
+    430,
+    TRUE
+),
+-- ==========================================================
+-- CLIENTES (81 - 100)
+-- ==========================================================
+(
+    'José Manuel',
+    'Ariza Torres',
+    '100000081',
+    'jose.ariza@gmail.com',
+    '1993-11-05',
+    '2026-02-03',
+    180,
+    TRUE
+),
+(
+    'Mariana',
+    'Ospina Gómez',
+    '100000082',
+    'mariana.ospina@hotmail.com',
+    '1998-05-27',
+    '2026-02-18',
+    0,
+    TRUE
+),
+(
+    'Andrés Felipe',
+    'Delgado Ruiz',
+    '100000083',
+    'andres.delgado@outlook.com',
+    '1991-01-14',
+    '2026-03-02',
+    970,
+    TRUE
+),
+(
+    'Laura Viviana',
+    'Rueda Moreno',
+    '100000084',
+    'laura.rueda@gmail.com',
+    '1996-09-21',
+    '2026-03-19',
+    420,
+    TRUE
+),
+(
+    'Carlos Andrés',
+    'Zambrano Castro',
+    '100000085',
+    'carlos.zambrano@yahoo.com',
+    '1988-04-02',
+    '2026-04-07',
+    1850,
+    TRUE
+),
+(
+    'Diana Carolina',
+    'Pulido Vargas',
+    '100000086',
+    'diana.pulido@gmail.com',
+    '1995-08-30',
+    '2026-04-24',
+    60,
+    TRUE
+),
+(
+    'Jhon Alexander',
+    'Cortés León',
+    '100000087',
+    'jhon.cortes@hotmail.com',
+    '1992-10-16',
+    '2026-05-08',
+    710,
+    FALSE
+),
+(
+    'Melissa Andrea',
+    'Correa Gil',
+    '100000088',
+    'melissa.correa@outlook.com',
+    '1999-07-04',
+    '2026-05-21',
+    340,
+    TRUE
+),
+(
+    'Álvaro',
+    'Nieto Ramírez',
+    '100000089',
+    'alvaro.nieto@gmail.com',
+    '1987-03-11',
+    '2026-06-05',
+    1580,
+    TRUE
+),
+(
+    'Juliana',
+    'Barrera Sánchez',
+    '100000090',
+    'juliana.barrera@hotmail.com',
+    '1997-12-22',
+    '2026-06-18',
+    95,
+    TRUE
+),
+(
+    'Santiago',
+    'Carvajal Pineda',
+    '100000091',
+    'santiago.carvajal@gmail.com',
+    '2000-06-09',
+    '2026-07-01',
+    260,
+    TRUE
+),
+(
+    'Natalia Andrea',
+    'Téllez Romero',
+    '100000092',
+    'natalia.tellez@outlook.com',
+    '1994-02-25',
+    '2026-07-15',
+    1180,
+    FALSE
+),
+(
+    'Juan Sebastián',
+    'Benavides Rojas',
+    '100000093',
+    'juan.benavides@gmail.com',
+    '1993-05-17',
+    '2026-08-03',
+    0,
+    TRUE
+),
+(
+    'Paola',
+    'Giraldo Ortiz',
+    '100000094',
+    'paola.giraldo@hotmail.com',
+    '1998-11-13',
+    '2026-08-20',
+    530,
+    TRUE
+),
+(
+    'Felipe',
+    'Amaya Castaño',
+    '100000095',
+    'felipe.amaya@gmail.com',
+    '1990-07-08',
+    '2026-09-04',
+    1490,
+    TRUE
+),
+(
+    'Marcela',
+    'Camacho López',
+    '100000096',
+    'marcela.camacho@yahoo.com',
+    '1995-04-19',
+    '2026-09-18',
+    310,
+    FALSE
+),
+(
+    'Daniel Felipe',
+    'Rojas Medina',
+    '100000097',
+    'daniel.rojas@gmail.com',
+    '1992-01-27',
+    '2026-10-06',
+    820,
+    TRUE
+),
+(
+    'Carolina',
+    'Bohórquez Herrera',
+    '100000098',
+    'carolina.bohorquez@hotmail.com',
+    '1997-06-15',
+    '2026-10-19',
+    210,
+    TRUE
+),
+(
+    'Miguel Felipe',
+    'Cano Ramírez',
+    '100000099',
+    'miguel.cano@outlook.com',
+    '1991-09-03',
+    '2026-11-07',
+    1320,
+    FALSE
+),
+(
+    'Valeria',
+    'Duque Martínez',
+    '100000100',
+    'valeria.duque@gmail.com',
+    '1999-03-29',
+    '2026-11-24',
+    460,
+    TRUE
+);
+
+COMMIT;
